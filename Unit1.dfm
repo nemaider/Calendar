@@ -1,8 +1,8 @@
 object Form1: TForm1
-  Left = 215
-  Top = 20
-  Width = 928
-  Height = 480
+  Left = 666
+  Top = 275
+  Width = 996
+  Height = 625
   Caption = 'Calendar'
   Color = clAppWorkSpace
   Font.Charset = DEFAULT_CHARSET
@@ -47,8 +47,8 @@ object Form1: TForm1
   object Label1: TLabel
     Left = 664
     Top = 120
-    Width = 185
-    Height = 29
+    Width = 193
+    Height = 41
     Alignment = taCenter
     AutoSize = False
     Caption = 'Label1'
@@ -61,6 +61,45 @@ object Form1: TForm1
     ParentColor = False
     ParentFont = False
     Visible = False
+  end
+  object Label2: TLabel
+    Left = 664
+    Top = 32
+    Width = 40
+    Height = 16
+    Caption = 'Dzie'#324
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label3: TLabel
+    Left = 716
+    Top = 32
+    Width = 61
+    Height = 16
+    Caption = 'Miesi'#261'c'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label4: TLabel
+    Left = 800
+    Top = 32
+    Width = 33
+    Height = 16
+    Caption = 'Rok'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
   end
   object Button1: TButton
     Left = 24
@@ -381,7 +420,7 @@ object Form1: TForm1
     Top = 80
     Width = 185
     Height = 25
-    Caption = 'Oblicz Date'
+    Caption = 'Oblicz dzie'#324' tygodnia'
     TabOrder = 39
     OnClick = Calculate_dateClick
   end
@@ -390,8 +429,8 @@ object Form1: TForm1
     Top = 48
     Width = 41
     Height = 21
+    Color = clWhite
     TabOrder = 40
-    Text = 'Dzien'
   end
   object Miesiac: TEdit
     Left = 720
@@ -399,7 +438,6 @@ object Form1: TForm1
     Width = 41
     Height = 21
     TabOrder = 41
-    Text = 'Miesiac'
   end
   object Rok: TEdit
     Left = 776
@@ -407,6 +445,5 @@ object Form1: TForm1
     Width = 73
     Height = 21
     TabOrder = 42
-    Text = 'Rok'
   end
 end
