@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 666
-  Top = 275
+  Left = 784
+  Top = 294
   Width = 996
   Height = 625
   Caption = 'Calendar'
@@ -78,7 +78,7 @@ object Form1: TForm1
   object Label3: TLabel
     Left = 716
     Top = 32
-    Width = 61
+    Width = 55
     Height = 16
     Caption = 'Miesi'#261'c'
     Font.Charset = DEFAULT_CHARSET
@@ -91,7 +91,7 @@ object Form1: TForm1
   object Label4: TLabel
     Left = 800
     Top = 32
-    Width = 33
+    Width = 29
     Height = 16
     Caption = 'Rok'
     Font.Charset = DEFAULT_CHARSET
@@ -398,20 +398,20 @@ object Form1: TForm1
     TabOrder = 36
   end
   object Button38: TButton
-    Left = 24
+    Left = 56
     Top = 40
-    Width = 81
+    Width = 33
     Height = 25
-    Caption = 'POPRZEDNI'
+    Caption = '<'
     TabOrder = 37
     OnClick = Button38Click
   end
   object Button39: TButton
-    Left = 496
+    Left = 520
     Top = 40
-    Width = 81
+    Width = 33
     Height = 25
-    Caption = 'NASTEPNY'
+    Caption = '>'
     TabOrder = 38
     OnClick = Button39Click
   end

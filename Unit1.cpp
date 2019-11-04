@@ -191,6 +191,8 @@ void prev_month(TLabel *Month,TLabel *Year)
 
 int calculate_day(int day,int month,int year)
 {
+
+
         if(day == 0 || month == 0 || year == 0)
                 return -1;
         if (month>2)
@@ -298,6 +300,21 @@ void __fastcall TForm1::Calculate_dateClick(TObject *Sender)
         int month=atoi((Miesiac->Text).c_str());
         int year=atoi((Rok->Text).c_str());
 
+// walidacja niepoprawnych dat
+        if(day <= 0 || day >31)
+                Dzien->Color=clRed;
+        else
+                Dzien->Color=clWhite;
+
+        if(month <= 0 || month >12)
+                Miesiac->Color=clRed;
+        else
+                Miesiac->Color=clWhite;
+
+        if(year <= 0)
+                Rok->Color=clRed;
+        else
+                Rok->Color=clWhite;
 
         which_day(calculate_day(day,month,year),Label1);
         Label1->Visible=true;

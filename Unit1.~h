@@ -55,9 +55,12 @@ __published:	// IDE-managed Components
         TLabel *Year;
         TButton *Calculate_date;
         TLabel *Label1;
-        TEdit *Dzien;
         TEdit *Miesiac;
         TEdit *Rok;
+        TEdit *Dzien;
+        TLabel *Label2;
+        TLabel *Label3;
+        TLabel *Label4;
         void __fastcall FormCreate(TObject *Sender);
         void __fastcall Button39Click(TObject *Sender);
         void __fastcall Button38Click(TObject *Sender);

@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------
 
-#include <vcl.h>
+#include <vcl.h>                                                          
 #pragma hdrstop
 #include <string>
 #include <cstdlib>
@@ -28,62 +28,62 @@ void set_month(int miesiac,TLabel *Month)
         {
                 case 1:
                 {
-                        Month->Caption="styczen";
+                        Month->Caption="Styczeñ";
                         break;
                 }
                 case 2:
                 {
-                        Month->Caption="luty";
+                        Month->Caption="Luty";
                         break;
                 }
                 case 3:
                 {
-                        Month->Caption="marzec";
+                        Month->Caption="Marzec";
                         break;
                 }
                 case 4:
                 {
-                        Month->Caption="kwiecien";
+                        Month->Caption="Kwiecieñ";
                         break;
                 }
                 case 5:
                 {
-                        Month->Caption="maj";
+                        Month->Caption="Maj";
                         break;
                 }
                 case 6:
                 {
-                        Month->Caption="czerwiec";
+                        Month->Caption="Czerwiec";
                         break;
                 }
                 case 7:
                 {
-                        Month->Caption="lipiec";
+                        Month->Caption="Lipiec";
                         break;
                 }
                 case 8:
                 {
-                        Month->Caption="sierpien";
+                        Month->Caption="Sierpieñ";
                         break;
                 }
                 case 9:
                 {
-                        Month->Caption="wrzesien";
+                        Month->Caption="Wrzesieñ";
                         break;
                 }
                 case 10:
                 {
-                        Month->Caption="pazdziernik";
+                        Month->Caption="PaŸdziernik";
                         break;
                 }
                 case 11:
                 {
-                        Month->Caption="listopad";
+                        Month->Caption="Listopad";
                         break;
                 }
                 case 12:
                 {
-                        Month->Caption="grudzien";
+                        Month->Caption="Grudzieñ";
                         break;
                 }
         }
@@ -191,6 +191,8 @@ void prev_month(TLabel *Month,TLabel *Year)
 
 int calculate_day(int day,int month,int year)
 {
+        if(day == 0 || month == 0 || year == 0)
+                return -1;
         if (month>2)
                 month-=2;
         else
@@ -205,15 +207,19 @@ int calculate_day(int day,int month,int year)
 
 void which_day(int day,TLabel *label)
 {
+
         switch(day)
         {
-                case 1: label->Caption="poniedzialek";  break;
+                case 1: label->Caption="poniedzia³ek";  break;
                 case 2: label->Caption="wtorek";        break;
-                case 3: label->Caption="sroda";         break;
+                case 3: label->Caption="œroda";         break;
                 case 4: label->Caption="czwartek";      break;
-                case 5: label->Caption="piatek";        break;
+                case 5: label->Caption="pi¹tek";        break;
                 case 6: label->Caption="sobota";        break;
-                case 7: label->Caption="niedziela";     break;
+                case 0: label->Caption="niedziela";     break;
+
+                default: label->Caption="Podano z³¹ datê!";
+                break;
         }
 }
 
@@ -291,8 +297,12 @@ void __fastcall TForm1::Calculate_dateClick(TObject *Sender)
         int day=atoi((Dzien->Text).c_str());
         int month=atoi((Miesiac->Text).c_str());
         int year=atoi((Rok->Text).c_str());
+
+
         which_day(calculate_day(day,month,year),Label1);
         Label1->Visible=true;
 }
 //---------------------------------------------------------------------------
+
+
 
