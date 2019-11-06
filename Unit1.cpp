@@ -17,7 +17,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 
 TButton *array[37];
 TButton *button=NULL;
-int miesiac=10;
+int miesiac=11;
 int rok=2019;
 
 //---------------------------------------------------------------------------
@@ -189,6 +189,28 @@ void prev_month(TLabel *Month,TLabel *Year)
         set_year(Year);
 }
 
+void next_year(TLabel *Month,TLabel *Year)
+{
+        rok++;
+        int first=pierwszy(miesiac,rok);
+        int days=ostatni(miesiac,rok);
+        hide(first,days);
+        set_value(first,days);
+        set_month(miesiac,Month);
+        set_year(Year);
+}
+
+void prev_year(TLabel *Month,TLabel *Year)
+{
+        rok--;
+        int first=pierwszy(miesiac,rok);
+        int days=ostatni(miesiac,rok);
+        hide(first,days);
+        set_value(first,days);
+        set_month(miesiac,Month);
+        set_year(Year);
+}
+
 int calculate_day(int day,int month,int year)
 {
 
@@ -220,7 +242,7 @@ void which_day(int day,TLabel *label)
                 case 6: label->Caption="sobota";        break;
                 case 0: label->Caption="niedziela";     break;
 
-                default: label->Caption="Podano z³¹ datê!";
+
                 break;
         }
 }
@@ -301,25 +323,66 @@ void __fastcall TForm1::Calculate_dateClick(TObject *Sender)
         int year=atoi((Rok->Text).c_str());
 
 // walidacja niepoprawnych dat
-        if(day <= 0 || day >31)
-                Dzien->Color=clRed;
-        else
+
+        if(day <= 0 || day >31){
+                Dzien->Color = clRed;
+                Label1->Visible = false;
+			} else  {
                 Dzien->Color=clWhite;
+                Label1->Visible = true;
+			}
 
-        if(month <= 0 || month >12)
-                Miesiac->Color=clRed;
-        else
-                Miesiac->Color=clWhite;
+		if(year <= 0){
+                Rok->Color = clRed;
+                Label1->Visible = false;
+        } else  {
+                Rok->Color = clWhite;
+                Label1->Visible = true;
+                }
 
-        if(year <= 0)
-                Rok->Color=clRed;
-        else
-                Rok->Color=clWhite;
+        if(month <= 0 || month >12){
+                Miesiac->Color = clRed;
+                Label1->Visible = false;
+        } 
+        
+		if(month == 2) {
+					
+				if(ostatni(month,year) < day){
+				Dzien->Color = clRed;
+				Miesiac->Color = clRed;
+				Label1->Visible = false;
+			} else {
+				Dzien->Color = clWhite;
+				Miesiac->Color = clWhite;
+				Label1->Visible = true;
+				}
+		} else 
+				Label1->Visible = true;
+        
+		
+		
+        
 
+
+        if(Label1->Visible != false) {
         which_day(calculate_day(day,month,year),Label1);
         Label1->Visible=true;
+        } else
+                ShowMessage("\n\nWyst¹pi³ b³¹d podczas wprowadzania daty!\nZwróæ uwagê na pola w kolorze czerwonym.\n\n");
 }
 //---------------------------------------------------------------------------
 
 
+
+void __fastcall TForm1::Button40Click(TObject *Sender)
+{
+        prev_year(Month,Year);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button41Click(TObject *Sender)
+{
+        next_year(Month,Year);
+}
+//---------------------------------------------------------------------------
 
