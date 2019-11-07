@@ -327,28 +327,41 @@ void __fastcall TForm1::Calculate_dateClick(TObject *Sender)
         if(day <= 0 || day >31){
                 Dzien->Color = clRed;
                 Label1->Visible = false;
-        } else
+			} else  {
                 Dzien->Color=clWhite;
+                Label1->Visible = true;
+			}
+
+		if(year <= 0){
+                Rok->Color = clRed;
+                Label1->Visible = false;
+        } else  {
+                Rok->Color = clWhite;
+                Label1->Visible = true;
+                }
 
         if(month <= 0 || month >12){
                 Miesiac->Color = clRed;
                 Label1->Visible = false;
-        } else {
-                if(month == 2) {
-                        if(ostatni(month,year) != 29){
-                        Miesiac->Color = clWhite;
-                        Label1->Visible = false;
-                        }
-
-                } else
-                        Miesiac->Color = clWhite;
-
-        }
-        if(year <= 0){
-                Rok->Color = clRed;
-                Label1->Visible = false;
-        } else
-                Rok->Color = clWhite;
+        } 
+        
+		if(month == 2) {
+					
+				if(ostatni(month,year) < day){
+				Dzien->Color = clRed;
+				Miesiac->Color = clRed;
+				Label1->Visible = false;
+			} else {
+				Dzien->Color = clWhite;
+				Miesiac->Color = clWhite;
+				Label1->Visible = true;
+				}
+		} else 
+				Label1->Visible = true;
+        
+		
+		
+        
 
 
         if(Label1->Visible != false) {
@@ -363,7 +376,7 @@ void __fastcall TForm1::Calculate_dateClick(TObject *Sender)
 
 void __fastcall TForm1::Button40Click(TObject *Sender)
 {
-        prev_year(Month,Year);        
+        prev_year(Month,Year);
 }
 //---------------------------------------------------------------------------
 

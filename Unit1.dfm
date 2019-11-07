@@ -104,7 +104,7 @@ object Form1: TForm1
   object Label5: TLabel
     Left = 16
     Top = 104
-    Width = 89
+    Width = 91
     Height = 16
     Caption = 'Poniedzia'#322'ek'
     Font.Charset = DEFAULT_CHARSET
@@ -117,7 +117,7 @@ object Form1: TForm1
   object Label6: TLabel
     Left = 116
     Top = 104
-    Width = 58
+    Width = 50
     Height = 16
     Caption = 'Wtorek'
     Font.Charset = DEFAULT_CHARSET
