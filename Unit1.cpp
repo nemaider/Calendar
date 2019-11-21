@@ -1,5 +1,5 @@
 //---------------------------------------------------------------------------
-
+//asdasd
 #include <vcl.h>                                                          
 #pragma hdrstop
 #include <string>
@@ -28,7 +28,7 @@ void set_month(int miesiac,TLabel *Month)
         {
                 case 1:
                 {
-                        Month->Caption="Styczeñ";
+                        Month->Caption="StyczeÃ±";
                         break;
                 }
                 case 2:
@@ -43,7 +43,7 @@ void set_month(int miesiac,TLabel *Month)
                 }
                 case 4:
                 {
-                        Month->Caption="Kwiecieñ";
+                        Month->Caption="KwiecieÃ±";
                         break;
                 }
                 case 5:
@@ -63,17 +63,17 @@ void set_month(int miesiac,TLabel *Month)
                 }
                 case 8:
                 {
-                        Month->Caption="Sierpieñ";
+                        Month->Caption="SierpieÃ±";
                         break;
                 }
                 case 9:
                 {
-                        Month->Caption="Wrzesieñ";
+                        Month->Caption="WrzesieÃ±";
                         break;
                 }
                 case 10:
                 {
-                        Month->Caption="PaŸdziernik";
+                        Month->Caption="PaÅ¸dziernik";
                         break;
                 }
                 case 11:
@@ -83,7 +83,7 @@ void set_month(int miesiac,TLabel *Month)
                 }
                 case 12:
                 {
-                        Month->Caption="Grudzieñ";
+                        Month->Caption="GrudzieÃ±";
                         break;
                 }
         }
@@ -234,11 +234,11 @@ void which_day(int day,TLabel *label)
 
         switch(day)
         {
-                case 1: label->Caption="poniedzia³ek";  break;
+                case 1: label->Caption="poniedziaÂ³ek";  break;
                 case 2: label->Caption="wtorek";        break;
-                case 3: label->Caption="œroda";         break;
+                case 3: label->Caption="Å“roda";         break;
                 case 4: label->Caption="czwartek";      break;
-                case 5: label->Caption="pi¹tek";        break;
+                case 5: label->Caption="piÂ¹tek";        break;
                 case 6: label->Caption="sobota";        break;
                 case 0: label->Caption="niedziela";     break;
 
@@ -364,7 +364,7 @@ void __fastcall TForm1::Calculate_dateClick(TObject *Sender)
         which_day(calculate_day(day,month,year),Label1);
         Label1->Visible=true;
         } else
-                ShowMessage("\n\nWyst¹pi³ b³¹d podczas wprowadzania daty!\nZwróæ uwagê na pola w kolorze czerwonym.\n\n");
+                ShowMessage("\n\nWystÂ¹piÂ³ bÂ³Â¹d podczas wprowadzania daty!\nZwrÃ³Ã¦ uwagÃª na pola w kolorze czerwonym.\n\n");
 }
 //---------------------------------------------------------------------------
 
