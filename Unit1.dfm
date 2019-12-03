@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 784
-  Top = 294
+  Left = 836
+  Top = 163
   Width = 996
   Height = 625
   Caption = 'Calendar'
@@ -350,6 +350,7 @@ object Form1: TForm1
     Height = 73
     Caption = 'Button1'
     TabOrder = 17
+    OnClick = Button18Click
   end
   object Button19: TButton
     Left = 344
