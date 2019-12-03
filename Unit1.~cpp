@@ -324,45 +324,41 @@ void __fastcall TForm1::Calculate_dateClick(TObject *Sender)
 
 // walidacja niepoprawnych dat
 
-        if(day <= 0 || day >31){
+        if(day <= 0 || day >31)
                 Dzien->Color = clRed;
-                Label1->Visible = false;
-			} else  {
+        else if (day > ostatni(month,year))
+                Dzien->Color = clRed;
+        else
                 Dzien->Color=clWhite;
-                Label1->Visible = true;
-			}
 
-		if(year <= 0){
+
+        if(year <= 0)
                 Rok->Color = clRed;
-                Label1->Visible = false;
-        } else  {
+        else
                 Rok->Color = clWhite;
-                Label1->Visible = true;
-                }
+
 
         if(month <= 0 || month >12){
                 Miesiac->Color = clRed;
                 Label1->Visible = false;
-        } 
-        
-		if(month == 2) {
-					
-				if(ostatni(month,year) < day){
-				Dzien->Color = clRed;
-				Miesiac->Color = clRed;
-				Label1->Visible = false;
-			} else {
-				Dzien->Color = clWhite;
-				Miesiac->Color = clWhite;
-				Label1->Visible = true;
-				}
-		} else 
-				Label1->Visible = true;
-        
-		
-		
-        
+        } else
+                Miesiac->Color = clWhite;
 
+        if(month == 2) {
+					
+                        if(ostatni(month,year) < day){
+                        Dzien->Color = clRed;
+		       	Miesiac->Color = clRed;
+                } else {
+                        Miesiac->Color = clWhite;
+                        Label1->Visible = true;
+                        }
+        }
+
+        if(Dzien->Color == clRed || Miesiac->Color == clRed || Rok->Color == clRed)
+                Label1->Visible = false;
+        else
+                Label1->Visible = true;
 
         if(Label1->Visible != false) {
         which_day(calculate_day(day,month,year),Label1);
