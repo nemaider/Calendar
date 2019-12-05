@@ -76,6 +76,7 @@ __published:	// IDE-managed Components
         void __fastcall Calculate_dateClick(TObject *Sender);
         void __fastcall Button40Click(TObject *Sender);
         void __fastcall Button41Click(TObject *Sender);
+        void __fastcall Button18Click(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
         __fastcall TForm1(TComponent* Owner);

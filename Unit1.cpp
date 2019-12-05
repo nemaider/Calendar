@@ -5,6 +5,13 @@
 #include <string>
 #include <cstdlib>
 #include "Unit1.h"
+#include <windows.h>
+#include <mysql.h>
+
+#define HOST "54.38.50.59"
+#define USER "www2857_events"
+#define PASS "8GJoBGoc3WUzkUA2rAn3"
+#define BASE "www2857_events"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -17,8 +24,37 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 
 TButton *array[37];
 TButton *button=NULL;
-int miesiac=11;
+int miesiac=12;
 int rok=2019;
+
+//---------------------------------------------------------------------------
+
+
+void connect_db(){
+
+MYSQL *connect;
+
+connect = mysql_init(NULL);
+
+if(!connect)
+    {
+        ShowMessage("Rozpoczecie pracy MySQL nie powiodlo sie");
+    }
+
+connect = mysql_real_connect(connect, HOST, USER, PASS, BASE, 0, NULL, 0);
+
+    if(!connect)
+    {
+        ShowMessage("Nie udalo polaczyc sie z baza MySQL");
+    }
+
+
+    mysql_query(connect, "INSERT INTO `eventy`(`id`, `nazwa`, `data`) VALUES (0,'dodane z hehe buildera','2019-12-05');");
+
+mysql_close(connect);
+
+}
+
 
 //---------------------------------------------------------------------------
 
@@ -379,6 +415,15 @@ void __fastcall TForm1::Button40Click(TObject *Sender)
 void __fastcall TForm1::Button41Click(TObject *Sender)
 {
         next_year(Month,Year);
+}
+//---------------------------------------------------------------------------
+
+
+
+
+void __fastcall TForm1::Button18Click(TObject *Sender)
+{
+//connect_db();
 }
 //---------------------------------------------------------------------------
 
