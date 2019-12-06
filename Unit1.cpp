@@ -49,7 +49,7 @@ void get_event(String year,String month,String day,TLabel *label)
                return;
                
         AnsiString caption;
-        String zapytanie="SELECT nazwa,data FROM eventy WHERE data='"+year+"-"+month+"-"+day+"'";
+        String zapytanie="SELECT godzina,minuta,nazwa FROM eventy WHERE data='"+year+"-"+month+"-"+day+"'"+" ORDER BY godzina ASC";
         char *query=zapytanie.c_str();
 
         int qstate=mysql_query(connect,query);
@@ -59,7 +59,7 @@ void get_event(String year,String month,String day,TLabel *label)
                 MYSQL_ROW row=mysql_fetch_row(res);
                 while(row)
                 {
-                        caption=caption+"\n"+row[0]+" "+row[1];
+                        caption=caption+"\n"+row[0]+" "+row[1]+" "+row[2];
                         row=mysql_fetch_row(res);
                 }
         }
