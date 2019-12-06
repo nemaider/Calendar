@@ -1,7 +1,6 @@
 //---------------------------------------------------------------------------
-
-#include <vcl.h>                                                          
 #pragma hdrstop
+#include <vcl.h> 
 #include <string>
 #include <cstdlib>
 #include "Unit1.h"
@@ -30,32 +29,70 @@ int rok=2019;
 //---------------------------------------------------------------------------
 
 
-void connect_db(){
-
-MYSQL *connect;
-
-connect = mysql_init(NULL);
-
-if(!connect)
-    {
-        ShowMessage("Rozpoczecie pracy MySQL nie powiodlo sie");
-    }
-
-connect = mysql_real_connect(connect, HOST, USER, PASS, BASE, 0, NULL, 0);
+MYSQL *connect_db(){
+    MYSQL *connect;
+    connect = mysql_init(0);
+    connect = mysql_real_connect(connect, HOST, USER, PASS, BASE, 0, NULL, 0);
 
     if(!connect)
     {
         ShowMessage("Nie udalo polaczyc sie z baza MySQL");
+        return NULL;
     }
-
-
-    mysql_query(connect, "INSERT INTO `eventy`(`id`, `nazwa`, `data`) VALUES (0,'dodane z hehe buildera','2019-12-05');");
-
-mysql_close(connect);
-
+    return connect;
 }
 
+void get_event(String year,String month,String day,TLabel *label)
+{
+        MYSQL *connect=connect_db();
+        if(connect==NULL)
+               return;
+               
+        AnsiString caption;
+        String zapytanie="SELECT nazwa,data FROM eventy WHERE data='"+year+"-"+month+"-"+day+"'";
+        char *query=zapytanie.c_str();
 
+        int qstate=mysql_query(connect,query);
+        if(qstate==0)
+        {
+                MYSQL_RES *res = mysql_use_result (connect);
+                MYSQL_ROW row=mysql_fetch_row(res);
+                while(row)
+                {
+                        caption=caption+"\n"+row[0]+" "+row[1];
+                        row=mysql_fetch_row(res);
+                }
+        }
+
+        if(caption=="")
+                caption="brak wydarzen";
+        label->Caption=caption;
+
+        mysql_close(connect);
+}
+
+void add_event(String nazwa,String year,String month,String day)
+{
+        MYSQL *connect=connect_db();
+        if(connect==NULL)
+               return;
+
+        AnsiString caption;
+        String zapytanie="INSERT INTO `eventy`(`id`, `nazwa`, `data`) VALUES (0,'"+nazwa+"','"+year+"-"+month+"-"+day+"')";
+        char *query=zapytanie.c_str();
+
+        int qstate=mysql_query(connect,query);
+        if(qstate!=0)
+                ShowMessage("Nie udalo polaczyc sie z baza MySQL");
+}
+
+void set_date(String day,TLabel *drok,TLabel *dmiesiac,TLabel *ddzien)
+{
+        drok->Caption=rok;
+        dmiesiac->Caption=miesiac;
+        ddzien->Caption=day;
+
+}
 //---------------------------------------------------------------------------
 
 void set_month(int miesiac,TLabel *Month)
@@ -64,7 +101,7 @@ void set_month(int miesiac,TLabel *Month)
         {
                 case 1:
                 {
-                        Month->Caption="StyczeÃ±";
+                        Month->Caption="Styczeñ";
                         break;
                 }
                 case 2:
@@ -79,7 +116,7 @@ void set_month(int miesiac,TLabel *Month)
                 }
                 case 4:
                 {
-                        Month->Caption="KwiecieÃ±";
+                        Month->Caption="Kwiecieñ";
                         break;
                 }
                 case 5:
@@ -99,17 +136,17 @@ void set_month(int miesiac,TLabel *Month)
                 }
                 case 8:
                 {
-                        Month->Caption="SierpieÃ±";
+                        Month->Caption="Sierpieñ";
                         break;
                 }
                 case 9:
                 {
-                        Month->Caption="WrzesieÃ±";
+                        Month->Caption="Wrzesieñ";
                         break;
                 }
                 case 10:
                 {
-                        Month->Caption="PaÅ¸dziernik";
+                        Month->Caption="PaŸdziernik";
                         break;
                 }
                 case 11:
@@ -119,7 +156,7 @@ void set_month(int miesiac,TLabel *Month)
                 }
                 case 12:
                 {
-                        Month->Caption="GrudzieÃ±";
+                        Month->Caption="Grudzieñ";
                         break;
                 }
         }
@@ -159,7 +196,8 @@ void hide(int first,int days)
         for(int i=1;i<38;i++)
         {
                 button=array[i];
-                button->Visible=true;
+                if(button->Visible==false)
+                        button->Visible=true;
         }
 
         int last=first+days;
@@ -277,12 +315,8 @@ void which_day(int day,TLabel *label)
                 case 5: label->Caption="piÂ¹tek";        break;
                 case 6: label->Caption="sobota";        break;
                 case 0: label->Caption="niedziela";     break;
-
-
-                break;
         }
 }
-
 //---------------------------------------------------------------------------
 
 void __fastcall TForm1::FormCreate(TObject *Sender)
@@ -347,10 +381,6 @@ void __fastcall TForm1::Button38Click(TObject *Sender)
         prev_month(Month,Year);
 }
 //---------------------------------------------------------------------------
-
-
-
-
 
 void __fastcall TForm1::Calculate_dateClick(TObject *Sender)
 {
@@ -418,12 +448,316 @@ void __fastcall TForm1::Button41Click(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TForm1::dbconnectClick(TObject *Sender)
+{
+        get_event("2019","12","03",Label12);
+}
+//---------------------------------------------------------------------------
 
+void __fastcall TForm1::Button1Click(TObject *Sender)
+{
+        String day=Button1->Caption;
+        get_event(rok,miesiac,day,Label12);
+        set_date(day,Label13,Label14,Label15);
+}
+//---------------------------------------------------------------------------
 
+void __fastcall TForm1::Button2Click(TObject *Sender)
+{
+        String day=Button2->Caption;
+        get_event(rok,miesiac,day,Label12);
+        set_date(day,Label13,Label14,Label15);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button3Click(TObject *Sender)
+{
+        String day=Button2->Caption;
+        get_event(rok,miesiac,day,Label12);
+        set_date(day,Label13,Label14,Label15);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button4Click(TObject *Sender)
+{
+        String day=Button3->Caption;
+        get_event(rok,miesiac,day,Label12);
+        set_date(day,Label13,Label14,Label15);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button5Click(TObject *Sender)
+{
+        String day=Button5->Caption;
+        get_event(rok,miesiac,day,Label12);
+        set_date(day,Label13,Label14,Label15);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button6Click(TObject *Sender)
+{
+        String day=Button6->Caption;
+        get_event(rok,miesiac,day,Label12);
+        set_date(day,Label13,Label14,Label15);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button7Click(TObject *Sender)
+{
+        String day=Button7->Caption;
+        get_event(rok,miesiac,day,Label12);
+        set_date(day,Label13,Label14,Label15);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button8Click(TObject *Sender)
+{
+        String day=Button8->Caption;
+        get_event(rok,miesiac,day,Label12);
+        set_date(day,Label13,Label14,Label15);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button9Click(TObject *Sender)
+{
+        String day=Button9->Caption;
+        get_event(rok,miesiac,day,Label12);
+        set_date(day,Label13,Label14,Label15);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button10Click(TObject *Sender)
+{
+        String day=Button10->Caption;
+        get_event(rok,miesiac,day,Label12);
+        set_date(day,Label13,Label14,Label15);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button11Click(TObject *Sender)
+{
+        String day=Button11->Caption;
+        get_event(rok,miesiac,day,Label12);
+        set_date(day,Label13,Label14,Label15);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button12Click(TObject *Sender)
+{
+        String day=Button12->Caption;
+        get_event(rok,miesiac,day,Label12);
+        set_date(day,Label13,Label14,Label15);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button13Click(TObject *Sender)
+{
+        String day=Button13->Caption;
+        get_event(rok,miesiac,day,Label12);
+        set_date(day,Label13,Label14,Label15);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button14Click(TObject *Sender)
+{
+        String day=Button14->Caption;
+        get_event(rok,miesiac,day,Label12);
+        set_date(day,Label13,Label14,Label15);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button15Click(TObject *Sender)
+{
+        String day=Button15->Caption;
+        get_event(rok,miesiac,day,Label12);
+        set_date(day,Label13,Label14,Label15);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button16Click(TObject *Sender)
+{
+        String day=Button16->Caption;
+        get_event(rok,miesiac,day,Label12);
+        set_date(day,Label13,Label14,Label15);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button17Click(TObject *Sender)
+{
+        String day=Button17->Caption;
+        get_event(rok,miesiac,day,Label12);
+        set_date(day,Label13,Label14,Label15);
+}
+//---------------------------------------------------------------------------
 
 void __fastcall TForm1::Button18Click(TObject *Sender)
 {
-//connect_db();
+        String day=Button18->Caption;
+        get_event(rok,miesiac,day,Label12);
+        set_date(day,Label13,Label14,Label15);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button19Click(TObject *Sender)
+{
+        String day=Button19->Caption;
+        get_event(rok,miesiac,day,Label12);
+        set_date(day,Label13,Label14,Label15);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button20Click(TObject *Sender)
+{
+        String day=Button20->Caption;
+        get_event(rok,miesiac,day,Label12);
+        set_date(day,Label13,Label14,Label15);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button21Click(TObject *Sender)
+{
+        String day=Button21->Caption;
+        get_event(rok,miesiac,day,Label12);
+        set_date(day,Label13,Label14,Label15);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button22Click(TObject *Sender)
+{
+        String day=Button22->Caption;
+        get_event(rok,miesiac,day,Label12);
+        set_date(day,Label13,Label14,Label15);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button23Click(TObject *Sender)
+{
+        String day=Button23->Caption;
+        get_event(rok,miesiac,day,Label12);
+        set_date(day,Label13,Label14,Label15);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button24Click(TObject *Sender)
+{
+        String day=Button24->Caption;
+        get_event(rok,miesiac,day,Label12);
+        set_date(day,Label13,Label14,Label15);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button25Click(TObject *Sender)
+{
+        String day=Button25->Caption;
+        get_event(rok,miesiac,day,Label12);
+        set_date(day,Label13,Label14,Label15);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button26Click(TObject *Sender)
+{
+        String day=Button26->Caption;
+        get_event(rok,miesiac,day,Label12);
+        set_date(day,Label13,Label14,Label15);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button27Click(TObject *Sender)
+{
+        String day=Button27->Caption;
+        get_event(rok,miesiac,day,Label12);
+        set_date(day,Label13,Label14,Label15);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button28Click(TObject *Sender)
+{
+        String day=Button28->Caption;
+        get_event(rok,miesiac,day,Label12);
+        set_date(day,Label13,Label14,Label15);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button29Click(TObject *Sender)
+{
+        String day=Button29->Caption;
+        get_event(rok,miesiac,day,Label12);
+        set_date(day,Label13,Label14,Label15);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button30Click(TObject *Sender)
+{
+        String day=Button30->Caption;
+        get_event(rok,miesiac,day,Label12);
+        set_date(day,Label13,Label14,Label15);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button31Click(TObject *Sender)
+{
+        String day=Button31->Caption;
+        get_event(rok,miesiac,day,Label12);
+        set_date(day,Label13,Label14,Label15);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button32Click(TObject *Sender)
+{
+        String day=Button32->Caption;
+        get_event(rok,miesiac,day,Label12);
+        set_date(day,Label13,Label14,Label15);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button33Click(TObject *Sender)
+{
+        String day=Button33->Caption;
+        get_event(rok,miesiac,day,Label12);
+        set_date(day,Label13,Label14,Label15);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button34Click(TObject *Sender)
+{
+        String day=Button34->Caption;
+        get_event(rok,miesiac,day,Label12);
+        set_date(day,Label13,Label14,Label15);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button35Click(TObject *Sender)
+{
+        String day=Button35->Caption;
+        get_event(rok,miesiac,day,Label12);
+        set_date(day,Label13,Label14,Label15);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button36Click(TObject *Sender)
+{
+        String day=Button36->Caption;
+        get_event(rok,miesiac,day,Label12);
+        set_date(day,Label13,Label14,Label15);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button37Click(TObject *Sender)
+{
+        String day=Button37->Caption;
+        get_event(rok,miesiac,day,Label12);
+        set_date(day,Label13,Label14,Label15);
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm1::Button42Click(TObject *Sender)
+{
+        add_event(Edit1->Text,Label13->Caption,Label14->Caption,Label15->Caption);
+        Label13->Caption="";
+        Label14->Caption="";
+        Label15->Caption="";
+        Edit1->Text="";
 }
 //---------------------------------------------------------------------------
 
