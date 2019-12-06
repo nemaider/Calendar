@@ -448,12 +448,6 @@ void __fastcall TForm1::Button41Click(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::dbconnectClick(TObject *Sender)
-{
-        get_event("2019","12","03",Label12);
-}
-//---------------------------------------------------------------------------
-
 void __fastcall TForm1::Button1Click(TObject *Sender)
 {
         String day=Button1->Caption;
@@ -760,4 +754,3 @@ void __fastcall TForm1::Button42Click(TObject *Sender)
         Edit1->Text="";
 }
 //---------------------------------------------------------------------------
-

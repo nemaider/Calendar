@@ -70,7 +70,6 @@ __published:	// IDE-managed Components
         TLabel *Label11;
         TButton *Button40;
         TButton *Button41;
-        TButton *dbconnect;
         TLabel *Label12;
         TLabel *Label13;
         TButton *Button42;
@@ -83,7 +82,6 @@ __published:	// IDE-managed Components
         void __fastcall Calculate_dateClick(TObject *Sender);
         void __fastcall Button40Click(TObject *Sender);
         void __fastcall Button41Click(TObject *Sender);
-        void __fastcall dbconnectClick(TObject *Sender);
         void __fastcall Button1Click(TObject *Sender);
         void __fastcall Button2Click(TObject *Sender);
         void __fastcall Button3Click(TObject *Sender);
