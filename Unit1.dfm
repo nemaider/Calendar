@@ -1,11 +1,11 @@
 object Form1: TForm1
-  Left = 922
-  Top = 39
+  Left = 719
+  Top = 54
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Calendar'
   ClientHeight = 731
-  ClientWidth = 980
+  ClientWidth = 987
   Color = clAppWorkSpace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText

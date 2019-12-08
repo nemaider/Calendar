@@ -49,7 +49,7 @@ void get_event(String year,String month,String day,TLabel *label)
                return;
                
         AnsiString caption;
-        String zapytanie="SELECT godzina,minuta,nazwa FROM eventy WHERE data='"+year+"-"+month+"-"+day+"'"+" ORDER BY godzina ASC";
+        String zapytanie="SELECT DATE_FORMAT(`godzina`,'%H:%i') AS `godzina`,nazwa FROM eventy WHERE data='"+year+"-"+month+"-"+day+"'"+" ORDER BY godzina ASC";
         char *query=zapytanie.c_str();
 
         int qstate=mysql_query(connect,query);
@@ -59,7 +59,7 @@ void get_event(String year,String month,String day,TLabel *label)
                 MYSQL_ROW row=mysql_fetch_row(res);
                 while(row)
                 {
-                        caption=caption+"\n"+row[0]+" "+row[1]+" "+row[2];
+                        caption=caption+"\n"+row[0]+" "+row[1];
                         row=mysql_fetch_row(res);
                 }
         }
@@ -78,7 +78,7 @@ void add_event(String nazwa,String year,String month,String day)
                return;
 
         AnsiString caption;
-        String zapytanie="INSERT INTO `eventy`(`id`, `nazwa`, `data`) VALUES (0,'"+nazwa+"','"+year+"-"+month+"-"+day+"')";
+        String zapytanie="INSERT INTO `eventy`(`id_zadania`, `nazwa`, `data`) VALUES (0,'"+nazwa+"','"+year+"-"+month+"-"+day+"')";
         char *query=zapytanie.c_str();
 
         int qstate=mysql_query(connect,query);
@@ -754,3 +754,4 @@ void __fastcall TForm1::Button42Click(TObject *Sender)
         Edit1->Text="";
 }
 //---------------------------------------------------------------------------
+
