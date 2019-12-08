@@ -649,22 +649,13 @@ object Form1: TForm1
     TabOrder = 44
     OnClick = Button41Click
   end
-  object dbconnect: TButton
-    Left = 664
-    Top = 200
-    Width = 185
-    Height = 25
-    Caption = 'Database Connection'
-    TabOrder = 45
-    OnClick = dbconnectClick
-  end
   object Button42: TButton
     Left = 664
     Top = 416
     Width = 185
     Height = 33
     Caption = 'Dodaj wydarzenie'
-    TabOrder = 46
+    TabOrder = 45
     OnClick = Button42Click
   end
   object Edit1: TEdit
@@ -672,6 +663,6 @@ object Form1: TForm1
     Top = 368
     Width = 185
     Height = 21
-    TabOrder = 47
+    TabOrder = 46
   end
 end
