@@ -76,6 +76,14 @@ __published:	// IDE-managed Components
         TEdit *Edit1;
         TLabel *Label14;
         TLabel *Label15;
+        TEdit *Edit2;
+        TLabel *Label16;
+        TLabel *Label17;
+        TLabel *Label18;
+        TEdit *Edit3;
+        TButton *Button43;
+        TButton *Button44;
+        TButton *Button45;
         void __fastcall FormCreate(TObject *Sender);
         void __fastcall Button39Click(TObject *Sender);
         void __fastcall Button38Click(TObject *Sender);
@@ -120,6 +128,7 @@ __published:	// IDE-managed Components
         void __fastcall Button36Click(TObject *Sender);
         void __fastcall Button37Click(TObject *Sender);
         void __fastcall Button42Click(TObject *Sender);
+        void __fastcall Button43Click(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
         __fastcall TForm1(TComponent* Owner);

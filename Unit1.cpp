@@ -42,12 +42,15 @@ MYSQL *connect_db(){
     return connect;
 }
 
+//---------------------------------------------------------------------------
+
+
 void get_event(String year,String month,String day,TLabel *label)
 {
         MYSQL *connect=connect_db();
         if(connect==NULL)
                return;
-               
+
         AnsiString caption;
         String zapytanie="SELECT DATE_FORMAT(`godzina`,'%H:%i') AS `godzina`,nazwa FROM eventy WHERE data='"+year+"-"+month+"-"+day+"'"+" ORDER BY godzina ASC";
         char *query=zapytanie.c_str();
@@ -65,26 +68,92 @@ void get_event(String year,String month,String day,TLabel *label)
         }
 
         if(caption=="")
-                caption="brak wydarzen";
+                caption="\nbrak wydarzen";
         label->Caption=caption;
 
         mysql_close(connect);
 }
 
-void add_event(String nazwa,String year,String month,String day)
+//---------------------------------------------------------------------------
+
+void get_event_id(String year,String month,String day,TLabel *label)
 {
         MYSQL *connect=connect_db();
         if(connect==NULL)
                return;
 
         AnsiString caption;
-        String zapytanie="INSERT INTO `eventy`(`id_zadania`, `nazwa`, `data`) VALUES (0,'"+nazwa+"','"+year+"-"+month+"-"+day+"')";
+        String zapytanie="SELECT id_zadania FROM eventy WHERE data='"+year+"-"+month+"-"+day+"'"+" ORDER BY godzina ASC";
+        char *query=zapytanie.c_str();
+
+        int qstate=mysql_query(connect,query);
+        if(qstate==0)
+        {
+                MYSQL_RES *res = mysql_use_result (connect);
+                MYSQL_ROW row=mysql_fetch_row(res);
+                while(row)
+                {
+                        caption=caption+"\n"+row[0]+" "+row[1];
+                        row=mysql_fetch_row(res);
+                }
+        }
+
+        label->Caption=caption;
+
+
+        mysql_close(connect);
+}
+
+//---------------------------------------------------------------------------
+
+
+void add_event(String nazwa,String year,String month,String day, String godz, String min)
+{
+        MYSQL *connect=connect_db();
+        if(connect==NULL)
+               return;
+
+        AnsiString caption;
+        String zapytanie;
+
+        if((godz <= 0) && (min <= 0))
+        {
+                zapytanie="INSERT INTO `eventy`(`id_zadania`, `nazwa`, `data`) VALUES (0,'"+nazwa+"','"+year+"-"+month+"-"+day+"')";
+        } else
+        {
+                zapytanie="INSERT INTO `eventy`(`id_zadania`, `nazwa`, `data`, `godzina`) VALUES (0,'"+nazwa+"','"+year+"-"+month+"-"+day+"','"+godz+":"+min+"')";
+        }
+
+
         char *query=zapytanie.c_str();
 
         int qstate=mysql_query(connect,query);
         if(qstate!=0)
-                ShowMessage("Nie udalo polaczyc sie z baza MySQL");
+                ShowMessage("Nie udalo siê dodac wydarzenia!");
 }
+
+//---------------------------------------------------------------------------
+
+void delete_event(String id)
+{
+        MYSQL *connect=connect_db();
+        if(connect==NULL)
+                return;
+
+        AnsiString caption;
+        String usuwanie;
+
+        usuwanie="DELETE FROM `eventy` WHERE `eventy`.`Id_zadania` = '"+id+"'";
+
+        char *query=usuwanie.c_str();
+
+        int qstate=mysql_query(connect,query);
+        if(qstate!=0)
+                ShowMessage("Nie udalo sie usunac wydarzenia!");
+}
+
+//---------------------------------------------------------------------------
+
 
 void set_date(String day,TLabel *drok,TLabel *dmiesiac,TLabel *ddzien)
 {
@@ -162,6 +231,10 @@ void set_month(int miesiac,TLabel *Month)
         }
 }
 
+
+//---------------------------------------------------------------------------
+
+
 int pierwszy(int miesiac,int rok)
 {
     if(miesiac>2)
@@ -230,6 +303,8 @@ void set_year(TLabel *Year)
 {
         Year->Caption=rok;
 }
+
+
 
 void next_month(TLabel *Month,TLabel *Year)
 {
@@ -453,6 +528,9 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
         String day=Button1->Caption;
         get_event(rok,miesiac,day,Label12);
         set_date(day,Label13,Label14,Label15);
+        Button43->Visible=true;
+        Button44->Visible=true;
+        Button45->Visible=true;
 }
 //---------------------------------------------------------------------------
 
@@ -461,6 +539,9 @@ void __fastcall TForm1::Button2Click(TObject *Sender)
         String day=Button2->Caption;
         get_event(rok,miesiac,day,Label12);
         set_date(day,Label13,Label14,Label15);
+        Button43->Visible=true;
+        Button44->Visible=true;
+        Button45->Visible=true;
 }
 //---------------------------------------------------------------------------
 
@@ -469,6 +550,9 @@ void __fastcall TForm1::Button3Click(TObject *Sender)
         String day=Button2->Caption;
         get_event(rok,miesiac,day,Label12);
         set_date(day,Label13,Label14,Label15);
+        Button43->Visible=true;
+        Button44->Visible=true;
+        Button45->Visible=true;
 }
 //---------------------------------------------------------------------------
 
@@ -477,6 +561,9 @@ void __fastcall TForm1::Button4Click(TObject *Sender)
         String day=Button3->Caption;
         get_event(rok,miesiac,day,Label12);
         set_date(day,Label13,Label14,Label15);
+        Button43->Visible=true;
+        Button44->Visible=true;
+        Button45->Visible=true;
 }
 //---------------------------------------------------------------------------
 
@@ -485,6 +572,9 @@ void __fastcall TForm1::Button5Click(TObject *Sender)
         String day=Button5->Caption;
         get_event(rok,miesiac,day,Label12);
         set_date(day,Label13,Label14,Label15);
+        Button43->Visible=true;
+        Button44->Visible=true;
+        Button45->Visible=true;
 }
 //---------------------------------------------------------------------------
 
@@ -493,6 +583,9 @@ void __fastcall TForm1::Button6Click(TObject *Sender)
         String day=Button6->Caption;
         get_event(rok,miesiac,day,Label12);
         set_date(day,Label13,Label14,Label15);
+        Button43->Visible=true;
+        Button44->Visible=true;
+        Button45->Visible=true;
 }
 //---------------------------------------------------------------------------
 
@@ -501,6 +594,9 @@ void __fastcall TForm1::Button7Click(TObject *Sender)
         String day=Button7->Caption;
         get_event(rok,miesiac,day,Label12);
         set_date(day,Label13,Label14,Label15);
+        Button43->Visible=true;
+        Button44->Visible=true;
+        Button45->Visible=true;
 }
 //---------------------------------------------------------------------------
 
@@ -509,6 +605,9 @@ void __fastcall TForm1::Button8Click(TObject *Sender)
         String day=Button8->Caption;
         get_event(rok,miesiac,day,Label12);
         set_date(day,Label13,Label14,Label15);
+        Button43->Visible=true;
+        Button44->Visible=true;
+        Button45->Visible=true;
 }
 //---------------------------------------------------------------------------
 
@@ -517,6 +616,9 @@ void __fastcall TForm1::Button9Click(TObject *Sender)
         String day=Button9->Caption;
         get_event(rok,miesiac,day,Label12);
         set_date(day,Label13,Label14,Label15);
+        Button43->Visible=true;
+        Button44->Visible=true;
+        Button45->Visible=true;
 }
 //---------------------------------------------------------------------------
 
@@ -525,6 +627,9 @@ void __fastcall TForm1::Button10Click(TObject *Sender)
         String day=Button10->Caption;
         get_event(rok,miesiac,day,Label12);
         set_date(day,Label13,Label14,Label15);
+        Button43->Visible=true;
+        Button44->Visible=true;
+        Button45->Visible=true;
 }
 //---------------------------------------------------------------------------
 
@@ -533,6 +638,9 @@ void __fastcall TForm1::Button11Click(TObject *Sender)
         String day=Button11->Caption;
         get_event(rok,miesiac,day,Label12);
         set_date(day,Label13,Label14,Label15);
+        Button43->Visible=true;
+        Button44->Visible=true;
+        Button45->Visible=true;
 }
 //---------------------------------------------------------------------------
 
@@ -541,6 +649,9 @@ void __fastcall TForm1::Button12Click(TObject *Sender)
         String day=Button12->Caption;
         get_event(rok,miesiac,day,Label12);
         set_date(day,Label13,Label14,Label15);
+        Button43->Visible=true;
+        Button44->Visible=true;
+        Button45->Visible=true;
 }
 //---------------------------------------------------------------------------
 
@@ -549,6 +660,9 @@ void __fastcall TForm1::Button13Click(TObject *Sender)
         String day=Button13->Caption;
         get_event(rok,miesiac,day,Label12);
         set_date(day,Label13,Label14,Label15);
+        Button43->Visible=true;
+        Button44->Visible=true;
+        Button45->Visible=true;
 }
 //---------------------------------------------------------------------------
 
@@ -557,6 +671,9 @@ void __fastcall TForm1::Button14Click(TObject *Sender)
         String day=Button14->Caption;
         get_event(rok,miesiac,day,Label12);
         set_date(day,Label13,Label14,Label15);
+        Button43->Visible=true;
+        Button44->Visible=true;
+        Button45->Visible=true;
 }
 //---------------------------------------------------------------------------
 
@@ -565,6 +682,9 @@ void __fastcall TForm1::Button15Click(TObject *Sender)
         String day=Button15->Caption;
         get_event(rok,miesiac,day,Label12);
         set_date(day,Label13,Label14,Label15);
+        Button43->Visible=true;
+        Button44->Visible=true;
+        Button45->Visible=true;
 }
 //---------------------------------------------------------------------------
 
@@ -573,6 +693,9 @@ void __fastcall TForm1::Button16Click(TObject *Sender)
         String day=Button16->Caption;
         get_event(rok,miesiac,day,Label12);
         set_date(day,Label13,Label14,Label15);
+        Button43->Visible=true;
+        Button44->Visible=true;
+        Button45->Visible=true;
 }
 //---------------------------------------------------------------------------
 
@@ -581,6 +704,9 @@ void __fastcall TForm1::Button17Click(TObject *Sender)
         String day=Button17->Caption;
         get_event(rok,miesiac,day,Label12);
         set_date(day,Label13,Label14,Label15);
+        Button43->Visible=true;
+        Button44->Visible=true;
+        Button45->Visible=true;
 }
 //---------------------------------------------------------------------------
 
@@ -589,6 +715,9 @@ void __fastcall TForm1::Button18Click(TObject *Sender)
         String day=Button18->Caption;
         get_event(rok,miesiac,day,Label12);
         set_date(day,Label13,Label14,Label15);
+        Button43->Visible=true;
+        Button44->Visible=true;
+        Button45->Visible=true;
 }
 //---------------------------------------------------------------------------
 
@@ -597,6 +726,9 @@ void __fastcall TForm1::Button19Click(TObject *Sender)
         String day=Button19->Caption;
         get_event(rok,miesiac,day,Label12);
         set_date(day,Label13,Label14,Label15);
+        Button43->Visible=true;
+        Button44->Visible=true;
+        Button45->Visible=true;
 }
 //---------------------------------------------------------------------------
 
@@ -605,6 +737,9 @@ void __fastcall TForm1::Button20Click(TObject *Sender)
         String day=Button20->Caption;
         get_event(rok,miesiac,day,Label12);
         set_date(day,Label13,Label14,Label15);
+        Button43->Visible=true;
+        Button44->Visible=true;
+        Button45->Visible=true;
 }
 //---------------------------------------------------------------------------
 
@@ -613,6 +748,9 @@ void __fastcall TForm1::Button21Click(TObject *Sender)
         String day=Button21->Caption;
         get_event(rok,miesiac,day,Label12);
         set_date(day,Label13,Label14,Label15);
+        Button43->Visible=true;
+        Button44->Visible=true;
+        Button45->Visible=true;
 }
 //---------------------------------------------------------------------------
 
@@ -621,6 +759,9 @@ void __fastcall TForm1::Button22Click(TObject *Sender)
         String day=Button22->Caption;
         get_event(rok,miesiac,day,Label12);
         set_date(day,Label13,Label14,Label15);
+        Button43->Visible=true;
+        Button44->Visible=true;
+        Button45->Visible=true;
 }
 //---------------------------------------------------------------------------
 
@@ -629,6 +770,9 @@ void __fastcall TForm1::Button23Click(TObject *Sender)
         String day=Button23->Caption;
         get_event(rok,miesiac,day,Label12);
         set_date(day,Label13,Label14,Label15);
+        Button43->Visible=true;
+        Button44->Visible=true;
+        Button45->Visible=true;
 }
 //---------------------------------------------------------------------------
 
@@ -637,6 +781,9 @@ void __fastcall TForm1::Button24Click(TObject *Sender)
         String day=Button24->Caption;
         get_event(rok,miesiac,day,Label12);
         set_date(day,Label13,Label14,Label15);
+        Button43->Visible=true;
+        Button44->Visible=true;
+        Button45->Visible=true;
 }
 //---------------------------------------------------------------------------
 
@@ -645,6 +792,9 @@ void __fastcall TForm1::Button25Click(TObject *Sender)
         String day=Button25->Caption;
         get_event(rok,miesiac,day,Label12);
         set_date(day,Label13,Label14,Label15);
+        Button43->Visible=true;
+        Button44->Visible=true;
+        Button45->Visible=true;
 }
 //---------------------------------------------------------------------------
 
@@ -653,6 +803,9 @@ void __fastcall TForm1::Button26Click(TObject *Sender)
         String day=Button26->Caption;
         get_event(rok,miesiac,day,Label12);
         set_date(day,Label13,Label14,Label15);
+        Button43->Visible=true;
+        Button44->Visible=true;
+        Button45->Visible=true;
 }
 //---------------------------------------------------------------------------
 
@@ -661,6 +814,9 @@ void __fastcall TForm1::Button27Click(TObject *Sender)
         String day=Button27->Caption;
         get_event(rok,miesiac,day,Label12);
         set_date(day,Label13,Label14,Label15);
+        Button43->Visible=true;
+        Button44->Visible=true;
+        Button45->Visible=true;
 }
 //---------------------------------------------------------------------------
 
@@ -669,6 +825,9 @@ void __fastcall TForm1::Button28Click(TObject *Sender)
         String day=Button28->Caption;
         get_event(rok,miesiac,day,Label12);
         set_date(day,Label13,Label14,Label15);
+        Button43->Visible=true;
+        Button44->Visible=true;
+        Button45->Visible=true;
 }
 //---------------------------------------------------------------------------
 
@@ -677,6 +836,9 @@ void __fastcall TForm1::Button29Click(TObject *Sender)
         String day=Button29->Caption;
         get_event(rok,miesiac,day,Label12);
         set_date(day,Label13,Label14,Label15);
+        Button43->Visible=true;
+        Button44->Visible=true;
+        Button45->Visible=true;
 }
 //---------------------------------------------------------------------------
 
@@ -685,6 +847,9 @@ void __fastcall TForm1::Button30Click(TObject *Sender)
         String day=Button30->Caption;
         get_event(rok,miesiac,day,Label12);
         set_date(day,Label13,Label14,Label15);
+        Button43->Visible=true;
+        Button44->Visible=true;
+        Button45->Visible=true;
 }
 //---------------------------------------------------------------------------
 
@@ -693,6 +858,9 @@ void __fastcall TForm1::Button31Click(TObject *Sender)
         String day=Button31->Caption;
         get_event(rok,miesiac,day,Label12);
         set_date(day,Label13,Label14,Label15);
+        Button43->Visible=true;
+        Button44->Visible=true;
+        Button45->Visible=true;
 }
 //---------------------------------------------------------------------------
 
@@ -701,6 +869,9 @@ void __fastcall TForm1::Button32Click(TObject *Sender)
         String day=Button32->Caption;
         get_event(rok,miesiac,day,Label12);
         set_date(day,Label13,Label14,Label15);
+        Button43->Visible=true;
+        Button44->Visible=true;
+        Button45->Visible=true;
 }
 //---------------------------------------------------------------------------
 
@@ -709,6 +880,9 @@ void __fastcall TForm1::Button33Click(TObject *Sender)
         String day=Button33->Caption;
         get_event(rok,miesiac,day,Label12);
         set_date(day,Label13,Label14,Label15);
+        Button43->Visible=true;
+        Button44->Visible=true;
+        Button45->Visible=true;
 }
 //---------------------------------------------------------------------------
 
@@ -717,6 +891,9 @@ void __fastcall TForm1::Button34Click(TObject *Sender)
         String day=Button34->Caption;
         get_event(rok,miesiac,day,Label12);
         set_date(day,Label13,Label14,Label15);
+        Button43->Visible=true;
+        Button44->Visible=true;
+        Button45->Visible=true;
 }
 //---------------------------------------------------------------------------
 
@@ -725,6 +902,9 @@ void __fastcall TForm1::Button35Click(TObject *Sender)
         String day=Button35->Caption;
         get_event(rok,miesiac,day,Label12);
         set_date(day,Label13,Label14,Label15);
+        Button43->Visible=true;
+        Button44->Visible=true;
+        Button45->Visible=true;
 }
 //---------------------------------------------------------------------------
 
@@ -733,6 +913,9 @@ void __fastcall TForm1::Button36Click(TObject *Sender)
         String day=Button36->Caption;
         get_event(rok,miesiac,day,Label12);
         set_date(day,Label13,Label14,Label15);
+        Button43->Visible=true;
+        Button44->Visible=true;
+        Button45->Visible=true;
 }
 //---------------------------------------------------------------------------
 
@@ -741,17 +924,121 @@ void __fastcall TForm1::Button37Click(TObject *Sender)
         String day=Button37->Caption;
         get_event(rok,miesiac,day,Label12);
         set_date(day,Label13,Label14,Label15);
+        Button43->Visible=true;
+        Button44->Visible=true;
+        Button45->Visible=true;
 }
 //---------------------------------------------------------------------------
 
 
 void __fastcall TForm1::Button42Click(TObject *Sender)
 {
-        add_event(Edit1->Text,Label13->Caption,Label14->Caption,Label15->Caption);
-        Label13->Caption="";
-        Label14->Caption="";
-        Label15->Caption="";
+        if(Button42->Caption=="Dodaj wydarzenie")
+        {
+                add_event(Edit1->Text,Label13->Caption,Label14->Caption,Label15->Caption, Edit2->Text, Edit3->Text);
+        }
+
+        if(Button42->Caption=="Usun wydarzenie")
+        {
+                delete_event(Edit1->Text);
+        }
+        String day=Label15->Caption;
+        get_event(rok,miesiac,day,Label12);
+
+        Label19->Caption="";
         Edit1->Text="";
+        Edit2->Text="";
+        Edit3->Text="";
+
+        Button42->Visible=false;
+        Button46->Visible=false;
+        
+        Label16->Visible=false;
+        Label17->Visible=false;
+        Label18->Visible=false;
+
+        Edit1->Visible=false;
+        Edit2->Visible=false;
+        Edit3->Visible=false;
+
+        Button43->Visible=true;
+        Button44->Visible=true;
+        Button45->Visible=true;
+
+
 }
 //---------------------------------------------------------------------------
+
+
+
+void __fastcall TForm1::Button43Click(TObject *Sender)
+{
+        Button43->Visible=false;
+        Button44->Visible=false;
+        Button45->Visible=false;
+
+        Button42->Visible=true;
+                Button42->Caption="Dodaj wydarzenie";
+        Button46->Visible=true;
+        Label16->Visible=true;
+                Label16->Caption="Godzina";
+        Label17->Visible=true;
+                Label17->Caption="Opis";
+        Label18->Visible=true;
+                Label18->Caption="Minuta";
+        Edit1->Visible=true;
+        Edit2->Visible=true;
+        Edit3->Visible=true;
+
+
+
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm1::Button46Click(TObject *Sender)
+{
+        Button43->Visible=true;
+        Button44->Visible=true;
+        Button45->Visible=true;
+
+        Button42->Visible=false;
+        Button46->Visible=false;
+
+        Label16->Visible=false;
+        Label17->Visible=false;
+        Label18->Visible=false;
+
+        Edit1->Visible=false;
+        Edit2->Visible=false;
+        Edit3->Visible=false;
+
+        Label19->Caption="";
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button44Click(TObject *Sender)
+{
+        Button43->Visible=false;
+        Button44->Visible=false;
+        Button45->Visible=false;
+
+        String day=Label15->Caption;
+        get_event_id(rok,miesiac,day,Label19);
+
+        Button42->Visible=true;
+                Button42->Caption="Usun wydarzenie";
+        Button46->Visible=true;
+
+
+        Label17->Visible=true;
+                Label17->Caption="Numer";
+
+        Edit1->Visible=true;
+
+
+}
+//---------------------------------------------------------------------------
+
 
