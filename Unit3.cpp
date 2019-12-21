@@ -59,7 +59,7 @@ bool signup(String login,String password)
                return 0;
 
         AnsiString caption;
-        String zapytanie="INSERT INTO `users`(`id`, `login`, `password`) VALUES (0,'"+login+"','"+password+"')";
+        String zapytanie="INSERT INTO `users`(`login`, `password`) VALUES ('"+login+"','"+password+"')";
         char *query=zapytanie.c_str();
 
         int qstate=mysql_query(connect,query);
@@ -93,3 +93,4 @@ void __fastcall TForm3::Button1Click(TObject *Sender)
 
 }
 //---------------------------------------------------------------------------
+
