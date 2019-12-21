@@ -1,7 +1,7 @@
 object Form1: TForm1
-  Left = 883
-  Top = 124
-  BorderIcons = [biSystemMenu]
+  Left = 430
+  Top = 122
+  BorderIcons = []
   BorderStyle = bsSingle
   Caption = 'Calendar'
   ClientHeight = 731
@@ -49,12 +49,12 @@ object Form1: TForm1
   end
   object Label1: TLabel
     Left = 664
-    Top = 120
-    Width = 193
-    Height = 41
+    Top = 112
+    Width = 185
+    Height = 33
     Alignment = taCenter
     AutoSize = False
-    Caption = 'Label1'
+    Caption = 'dzien'
     Color = clAppWorkSpace
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -198,8 +198,8 @@ object Form1: TForm1
     ParentFont = False
   end
   object Label12: TLabel
-    Left = 664
-    Top = 170
+    Left = 662
+    Top = 192
     Width = 3
     Height = 13
     Color = clAppWorkSpace
@@ -222,7 +222,7 @@ object Form1: TForm1
     ParentColor = False
   end
   object Label15: TLabel
-    Left = 664
+    Left = 672
     Top = 160
     Width = 3
     Height = 13
@@ -272,10 +272,40 @@ object Form1: TForm1
     Visible = False
   end
   object Label19: TLabel
-    Left = 646
-    Top = 170
+    Left = 648
+    Top = 192
     Width = 3
     Height = 13
+    Color = clAppWorkSpace
+    ParentColor = False
+  end
+  object Label20: TLabel
+    Left = 56
+    Top = 616
+    Width = 102
+    Height = 29
+    Caption = 'Welcome'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -23
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+  end
+  object user: TLabel
+    Left = 32
+    Top = 648
+    Width = 153
+    Height = 25
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'siema'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
   end
   object Button1: TButton
     Left = 24
@@ -711,7 +741,7 @@ object Form1: TForm1
     Left = 664
     Top = 520
     Width = 185
-    Height = 25
+    Height = 21
     TabOrder = 46
     Visible = False
   end
@@ -719,7 +749,7 @@ object Form1: TForm1
     Left = 664
     Top = 552
     Width = 65
-    Height = 25
+    Height = 21
     TabOrder = 47
     Visible = False
   end
@@ -761,13 +791,32 @@ object Form1: TForm1
     Visible = False
   end
   object Button46: TButton
-    Left = 800
-    Top = 576
-    Width = 51
+    Left = 784
+    Top = 584
+    Width = 67
     Height = 25
     Caption = 'Cofnij'
     TabOrder = 52
     Visible = False
     OnClick = Button46Click
+  end
+  object Button47: TButton
+    Left = 32
+    Top = 680
+    Width = 153
+    Height = 33
+    Caption = 'Sign out'
+    TabOrder = 53
+    OnClick = Button47Click
+  end
+  object Button48: TButton
+    Left = 664
+    Top = 552
+    Width = 185
+    Height = 25
+    Caption = 'Dodaj godzine'
+    TabOrder = 54
+    Visible = False
+    OnClick = Button48Click
   end
 end
