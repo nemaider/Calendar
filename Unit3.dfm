@@ -13,6 +13,7 @@ object Form3: TForm3
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  OnKeyPress = FormKeyPress
   PixelsPerInch = 96
   TextHeight = 13
   object login: TEdit

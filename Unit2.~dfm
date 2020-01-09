@@ -14,6 +14,7 @@ object Form2: TForm2
   Font.Style = []
   OldCreateOrder = False
   Scaled = False
+  OnKeyPress = FormKeyPress
   PixelsPerInch = 96
   TextHeight = 13
   object Button1: TButton
@@ -31,6 +32,7 @@ object Form2: TForm2
     Width = 217
     Height = 21
     TabOrder = 1
+    Text = 'login'
   end
   object password: TEdit
     Left = 64

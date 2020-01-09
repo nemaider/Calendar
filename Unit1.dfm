@@ -315,9 +315,9 @@ object Form1: TForm1
     Caption = 'Button1'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -11
+    Font.Height = -19
     Font.Name = 'MS Sans Serif'
-    Font.Style = []
+    Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
     OnClick = Button1Click
@@ -328,6 +328,12 @@ object Form1: TForm1
     Width = 73
     Height = 73
     Caption = 'Button1'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 1
     OnClick = Button2Click
   end
@@ -337,6 +343,12 @@ object Form1: TForm1
     Width = 73
     Height = 73
     Caption = 'Button1'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 2
     OnClick = Button3Click
   end
@@ -346,6 +358,12 @@ object Form1: TForm1
     Width = 73
     Height = 73
     Caption = 'Button1'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 3
     OnClick = Button4Click
   end
@@ -355,6 +373,12 @@ object Form1: TForm1
     Width = 73
     Height = 73
     Caption = 'Button1'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 4
     OnClick = Button5Click
   end
@@ -366,10 +390,10 @@ object Form1: TForm1
     Cancel = True
     Caption = 'Button1'
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = clBlack
-    Font.Height = -11
+    Font.Color = clWindowText
+    Font.Height = -19
     Font.Name = 'MS Sans Serif'
-    Font.Style = []
+    Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 5
     OnClick = Button6Click
@@ -380,6 +404,12 @@ object Form1: TForm1
     Width = 73
     Height = 73
     Caption = 'Button1'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 6
     OnClick = Button7Click
   end
@@ -389,6 +419,12 @@ object Form1: TForm1
     Width = 73
     Height = 73
     Caption = 'Button1'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 7
     OnClick = Button8Click
   end
@@ -398,6 +434,12 @@ object Form1: TForm1
     Width = 73
     Height = 73
     Caption = 'Button1'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 8
     OnClick = Button9Click
   end
@@ -407,6 +449,12 @@ object Form1: TForm1
     Width = 73
     Height = 73
     Caption = 'Button1'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 9
     OnClick = Button10Click
   end
@@ -416,6 +464,12 @@ object Form1: TForm1
     Width = 73
     Height = 73
     Caption = 'Button1'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 10
     OnClick = Button11Click
   end
@@ -425,6 +479,12 @@ object Form1: TForm1
     Width = 73
     Height = 73
     Caption = 'Button1'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 11
     OnClick = Button12Click
   end
@@ -435,10 +495,10 @@ object Form1: TForm1
     Height = 73
     Caption = 'Button1'
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = clSilver
-    Font.Height = -11
+    Font.Color = clWindowText
+    Font.Height = -19
     Font.Name = 'MS Sans Serif'
-    Font.Style = []
+    Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 12
     OnClick = Button13Click
@@ -449,6 +509,12 @@ object Form1: TForm1
     Width = 73
     Height = 73
     Caption = 'Button1'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 13
     OnClick = Button14Click
   end
@@ -458,6 +524,12 @@ object Form1: TForm1
     Width = 73
     Height = 73
     Caption = 'Button1'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 14
     OnClick = Button15Click
   end
@@ -467,6 +539,12 @@ object Form1: TForm1
     Width = 73
     Height = 73
     Caption = 'Button1'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 15
     OnClick = Button16Click
   end
@@ -476,6 +554,12 @@ object Form1: TForm1
     Width = 73
     Height = 73
     Caption = 'Button1'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 16
     OnClick = Button17Click
   end
@@ -485,6 +569,12 @@ object Form1: TForm1
     Width = 73
     Height = 73
     Caption = 'Button1'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 17
     OnClick = Button18Click
   end
@@ -494,6 +584,12 @@ object Form1: TForm1
     Width = 73
     Height = 73
     Caption = 'Button1'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 18
     OnClick = Button19Click
   end
@@ -503,6 +599,12 @@ object Form1: TForm1
     Width = 73
     Height = 73
     Caption = 'Button1'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 19
     OnClick = Button20Click
   end
@@ -512,6 +614,12 @@ object Form1: TForm1
     Width = 73
     Height = 73
     Caption = 'Button1'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 20
     OnClick = Button21Click
   end
@@ -521,6 +629,12 @@ object Form1: TForm1
     Width = 73
     Height = 73
     Caption = 'Button1'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 21
     OnClick = Button22Click
   end
@@ -530,6 +644,12 @@ object Form1: TForm1
     Width = 73
     Height = 73
     Caption = 'Button1'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 22
     OnClick = Button23Click
   end
@@ -539,6 +659,12 @@ object Form1: TForm1
     Width = 73
     Height = 73
     Caption = 'Button1'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 23
     OnClick = Button24Click
   end
@@ -548,6 +674,12 @@ object Form1: TForm1
     Width = 73
     Height = 73
     Caption = 'Button1'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 24
     OnClick = Button25Click
   end
@@ -557,6 +689,12 @@ object Form1: TForm1
     Width = 73
     Height = 73
     Caption = 'Button1'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 25
     OnClick = Button26Click
   end
@@ -566,6 +704,12 @@ object Form1: TForm1
     Width = 73
     Height = 73
     Caption = 'Button1'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 26
     OnClick = Button27Click
   end
@@ -575,6 +719,12 @@ object Form1: TForm1
     Width = 73
     Height = 73
     Caption = 'Button1'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 27
     OnClick = Button28Click
   end
@@ -584,6 +734,12 @@ object Form1: TForm1
     Width = 73
     Height = 73
     Caption = 'Button1'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 28
     OnClick = Button29Click
   end
@@ -593,6 +749,12 @@ object Form1: TForm1
     Width = 73
     Height = 73
     Caption = 'Button1'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 29
     OnClick = Button30Click
   end
@@ -602,6 +764,12 @@ object Form1: TForm1
     Width = 73
     Height = 73
     Caption = 'Button1'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 30
     OnClick = Button31Click
   end
@@ -611,6 +779,12 @@ object Form1: TForm1
     Width = 73
     Height = 73
     Caption = 'Button1'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 31
     OnClick = Button32Click
   end
@@ -620,6 +794,12 @@ object Form1: TForm1
     Width = 73
     Height = 73
     Caption = 'Button1'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 32
     OnClick = Button33Click
   end
@@ -629,6 +809,12 @@ object Form1: TForm1
     Width = 73
     Height = 73
     Caption = 'Button1'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 33
     OnClick = Button34Click
   end
@@ -638,6 +824,12 @@ object Form1: TForm1
     Width = 73
     Height = 73
     Caption = 'Button1'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 34
     OnClick = Button35Click
   end
@@ -647,6 +839,12 @@ object Form1: TForm1
     Width = 73
     Height = 73
     Caption = 'Button1'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 35
     OnClick = Button36Click
   end
@@ -656,6 +854,12 @@ object Form1: TForm1
     Width = 73
     Height = 73
     Caption = 'Button1'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
     TabOrder = 36
     OnClick = Button37Click
   end

@@ -3,7 +3,8 @@
 #include <vcl.h>
 #pragma hdrstop
 
-#include "Unit1.h" //baza
+#include "DB.h"
+#include "Unit1.h"
 #include "Unit2.h"
 #include "Unit3.h"
 //---------------------------------------------------------------------------
@@ -93,3 +94,11 @@ void __fastcall TForm3::Button1Click(TObject *Sender)
 
 }
 //---------------------------------------------------------------------------
+void __fastcall TForm3::FormKeyPress(TObject *Sender, char &Key)
+{
+        char klawisz='\r';
+        if(Key==klawisz)
+                Button1->OnClick(Sender);
+}
+//---------------------------------------------------------------------------
+

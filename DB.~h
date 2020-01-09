@@ -1,0 +1,13 @@
+#include <windows.h>
+#include <mysql.h>
+
+#define HOST "54.38.50.59"
+#define USER "www2857_events"
+#define PASS "8GJoBGoc3WUzkUA2rAn3"
+#define BASE "www2857_events"
+
+class DB
+{
+public:
+        MYSQL *connect_db();
+};

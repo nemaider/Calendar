@@ -18,6 +18,7 @@ __published:	// IDE-managed Components
         TButton *Button2;
         void __fastcall Button2Click(TObject *Sender);
         void __fastcall Button1Click(TObject *Sender);
+        void __fastcall FormKeyPress(TObject *Sender, char &Key);
 private:	// User declarations
 public:		// User declarations
         __fastcall TForm3(TComponent* Owner);

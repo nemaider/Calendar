@@ -1,0 +1,15 @@
+#include <vcl.h>
+#include "DB.h"
+
+MYSQL *DB::connect_db(){
+    MYSQL *connect;
+    connect = mysql_init(0);
+    connect = mysql_real_connect(connect, HOST, USER, PASS, BASE, 0, NULL, 0);
+
+    if(!connect)
+    {
+        ShowMessage("Nie udalo polaczyc sie z baza MySQL");
+        return NULL;
+    }
+    return connect;
+}

@@ -1,10 +1,10 @@
 object Form3: TForm3
-  Left = 653
-  Top = 331
+  Left = 804
+  Top = 353
   BorderIcons = []
   BorderStyle = bsSingle
   Caption = 'Sign up'
-  ClientHeight = 427
+  ClientHeight = 409
   ClientWidth = 388
   Color = clAppWorkSpace
   Font.Charset = DEFAULT_CHARSET
@@ -13,6 +13,7 @@ object Form3: TForm3
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  OnKeyPress = FormKeyPress
   PixelsPerInch = 96
   TextHeight = 13
   object login: TEdit
