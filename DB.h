@@ -15,7 +15,9 @@ public:
         bool check_login(String);
         bool check_pass(String,String);
         void get_event(String,String,String,String,TLabel *);
-        void get_event_id(String,String,String,TLabel *);
+        void get_event_id(String,String,String,String,TLabel *);
         void add_event(String,String,String,String,String,String,String);
-        void delete_event(String);
+        void delete_event(String,String,String,String,String);
+       // void edit_event(String,String,TEdit *, TEdit *, TEdit *);
+        int check_id(String,String,String,String,String);
 };

@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 430
-  Top = 122
+  Left = 798
+  Top = 46
   BorderIcons = []
   BorderStyle = bsSingle
   Caption = 'Calendar'
@@ -272,7 +272,7 @@ object Form1: TForm1
     Visible = False
   end
   object Label19: TLabel
-    Left = 648
+    Left = 642
     Top = 192
     Width = 3
     Height = 13
@@ -299,7 +299,7 @@ object Form1: TForm1
     Height = 25
     Alignment = taCenter
     AutoSize = False
-    Caption = 'siema'
+    Caption = 'user'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -993,6 +993,7 @@ object Form1: TForm1
     Caption = 'Edytuj'
     TabOrder = 51
     Visible = False
+    OnClick = Button45Click
   end
   object Button46: TButton
     Left = 784

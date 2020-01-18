@@ -12,10 +12,12 @@
 class TForm2 : public TForm
 {
 __published:	// IDE-managed Components
-        TButton *Button1;
         TEdit *login;
         TEdit *password;
         TButton *Button2;
+        TButton *Button1;
+        TLabel *Label1;
+        TLabel *Label2;
         void __fastcall Button1Click(TObject *Sender);
         void __fastcall Button2Click(TObject *Sender);
         void __fastcall FormKeyPress(TObject *Sender, char &Key);

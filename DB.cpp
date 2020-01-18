@@ -90,8 +90,8 @@ bool DB::check_pass(String pass,String repass)
         ShowMessage("Has³a musz¹ byc takie same!");
         return 0;
 }
-void DB::get_event(String user,String year,String month,String day,TLabel *label)
 
+void DB::get_event(String user,String year,String month,String day,TLabel *label)
 {
         MYSQL *connect=connect_db();
         if(connect==NULL)
@@ -147,6 +147,42 @@ void DB::get_event_id(String user,String year,String month,String day,TLabel *la
         mysql_close(connect);
 }
 
+int DB::check_id(String user,String year,String month,String day,String id)
+{
+        MYSQL *connect=connect_db();
+        if(connect==NULL)
+               return 0;
+
+        int status=0;
+
+        AnsiString caption;
+        String zapytanie="SELECT id_zadania FROM eventy WHERE user='"+user+"' AND data='"+year+"-"+month+"-"+day+"'"+" ORDER BY godzina ASC";
+        char *query=zapytanie.c_str();
+
+        int qstate=mysql_query(connect,query);
+        if(qstate==0)
+        {
+                MYSQL_RES *res = mysql_use_result (connect);
+                MYSQL_ROW row=mysql_fetch_row(res);
+                while(row)
+                {
+                        if(id==row[0]){
+                                status=1;
+                                return status;
+                        }
+
+                        row=mysql_fetch_row(res);
+                }
+        }
+
+
+
+        mysql_close(connect);
+        return status;
+
+
+}
+
 void DB::add_event(String user,String nazwa,String year,String month,String day, String godz, String min)
 {
         MYSQL *connect=connect_db();
@@ -170,6 +206,8 @@ void DB::add_event(String user,String nazwa,String year,String month,String day,
         int qstate=mysql_query(connect,query);
         if(qstate!=0)
                 ShowMessage("Nie udalo siê dodac wydarzenia!");
+
+        mysql_close(connect);
 }
 
 void DB::delete_event(String user,String id,String year,String month,String day)
@@ -195,19 +233,25 @@ void DB::delete_event(String user,String id,String year,String month,String day)
                 {
                         caption=row[0];
                         row=mysql_fetch_row(res);
-                        if(id==caption)
+
+                        if(id == caption)
                         {
-                                usuwanie="DELETE FROM `eventy` WHERE user='"+user+"' AND `eventy`.`Id_zadania` = '"+id+"'";
+                                usuwanie="DELETE FROM `eventy` WHERE `Id_zadania`='"+id+"'";
 
                                 char *query1=usuwanie.c_str();
                                 int qstate1=mysql_query(connect,query1);
 
                                 if(qstate1!=0){
-
+                                        ShowMessage(caption);
+                                        ShowMessage(usuwanie);
+                                        ShowMessage(zapytanie);
                                         ShowMessage("Nie udalo sie usunac wydarzenia!");
 
                                 } else {
                                         status=1;
+                                        ShowMessage(caption);
+                                        ShowMessage(usuwanie);
+                                        ShowMessage(zapytanie);
                                         ShowMessage("Usunieto zadanie");
                                 }
                         }
@@ -217,15 +261,41 @@ void DB::delete_event(String user,String id,String year,String month,String day)
                         ShowMessage("Podano zly numer zadania!");
         }
 
+        mysql_close(connect);
+
         // koniec walidacji
 
 
 
-        //usuwanie="DELETE FROM `eventy` WHERE user='"+user+"' AND `eventy`.`Id_zadania` = '"+id+"'";
 
-        //char *query1=usuwanie.c_str();
-
-        //int qstate1=mysql_query(connect,query1);
-       // if(qstate1!=0)
-               // ShowMessage("Nie udalo sie usunac wydarzenia!");
 }
+
+ /*
+void DB::edit_event(String user,String id,TEdit *description, TEdit *hour, TEdit *min)
+{
+        MYSQL *connect=connect_db();
+        if(connect==NULL)
+               return;
+
+
+        String zapytanie="SELECT DATE_FORMAT(`godzina`,'%H') AS `godzina`,nazwa FROM eventy WHERE id_zadania='"+id+"' AND user='"+user+"' ORDER BY godzina ASC";
+        char *query=zapytanie.c_str();
+
+        int qstate=mysql_query(connect,query);
+        if(qstate==0)
+        {
+                MYSQL_RES *res = mysql_use_result (connect);
+                MYSQL_ROW row=mysql_fetch_row(res);
+
+                description->Text=row[1];
+                hour->Text=row[0];
+                min->Text=row[0];
+
+        }
+
+
+
+        mysql_close(connect);
+}
+
+*/

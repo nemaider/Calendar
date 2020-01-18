@@ -30,12 +30,17 @@ void __fastcall TForm2::Button1Click(TObject *Sender)
                 Form1->Show();
                 Form1->user->Caption=login->Text;
         }
+
+        login->Text="";
+        password->Text="";
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm2::Button2Click(TObject *Sender)
 {
         Form2->Hide();
-        Form3->Show();        
+        Form3->Show();
+        login->Text="";
+        password->Text="";
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm2::FormKeyPress(TObject *Sender, char &Key)
@@ -45,4 +50,5 @@ void __fastcall TForm2::FormKeyPress(TObject *Sender, char &Key)
                 Button1->OnClick(Sender);
 }
 //---------------------------------------------------------------------------
+
 

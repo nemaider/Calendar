@@ -23,6 +23,9 @@ void __fastcall TForm3::Button2Click(TObject *Sender)
 {
         Form3->Close();
         Form2->Show();
+        login->Text="";
+        password->Text="";
+        repassword->Text="";
 }
 //---------------------------------------------------------------------------
 
@@ -36,6 +39,10 @@ void __fastcall TForm3::Button1Click(TObject *Sender)
                                 Form3->Close();
                                 Form2->Show();
                         }
+
+        login->Text="";
+        password->Text="";
+        repassword->Text="";
 
 }
 //---------------------------------------------------------------------------
