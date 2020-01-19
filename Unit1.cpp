@@ -580,6 +580,12 @@ void __fastcall TForm1::Button42Click(TObject *Sender)
         {
                 conn.delete_event(user->Caption,Edit1->Text,data.rok,data.miesiac,Label15->Caption);
         }
+
+        if(Button42->Caption=="Edytuj wydarzenie")
+        {
+                conn.update_event(user->Caption, Edit1->Text, Label13->Caption, Label14->Caption, Label15->Caption, Edit2->Text, Edit3->Text, id->Caption);
+        }
+
         String day=Label15->Caption;
         conn.get_event(user->Caption,data.rok,data.miesiac,day,Label12);
 
@@ -697,22 +703,24 @@ void __fastcall TForm1::Button48Click(TObject *Sender)
                 Edit2->Visible=true;
                 Edit3->Visible=true;
 
-                Edit1->Text="";
+
                 Edit2->Text="";
                 Edit3->Text="";
         }
 
         if(Button42->Caption=="Edytuj wydarzenie")
         {
-
+                String iden=Edit1->Text;
                 String day=Label15->Caption;
 
-                if(conn.check_id(user->Caption, data.rok, data.miesiac, day, Edit1->Text)==1) {
+                if(conn.check_id(user->Caption, data.rok, data.miesiac, day, iden)==1) {
                 Button48->Visible=false;
 
                 Label17->Visible=true;
                         Label17->Caption="Opis";
+                        id->Caption = Edit1->Text;
                         Edit1->Text="";
+
 
                 Label16->Visible=true;
                         Label16->Caption="Godzina";
@@ -725,7 +733,8 @@ void __fastcall TForm1::Button48Click(TObject *Sender)
                         Edit3->Text="";
 
 
-                      ////  conn.edit_event(user->Caption, Edit1->Text, Edit1, Edit2, Edit3);
+                conn.edit_event(user->Caption, iden, Edit1, Edit2);
+                conn.edit_event2(user->Caption, iden, Edit3);
 
 
 

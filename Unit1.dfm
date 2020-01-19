@@ -307,6 +307,13 @@ object Form1: TForm1
     Font.Style = [fsBold]
     ParentFont = False
   end
+  object id: TLabel
+    Left = 936
+    Top = 696
+    Width = 3
+    Height = 13
+    Visible = False
+  end
   object Button1: TButton
     Left = 24
     Top = 128

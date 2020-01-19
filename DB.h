@@ -18,6 +18,8 @@ public:
         void get_event_id(String,String,String,String,TLabel *);
         void add_event(String,String,String,String,String,String,String);
         void delete_event(String,String,String,String,String);
-       // void edit_event(String,String,TEdit *, TEdit *, TEdit *);
+        void edit_event(String,String,TEdit *,TEdit *);
+        void edit_event2(String,String,TEdit *);
+        void update_event(String,String,String,String,String,String,String,String);
         int check_id(String,String,String,String,String);
 };

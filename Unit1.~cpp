@@ -186,7 +186,7 @@ void __fastcall TForm1::Button2Click(TObject *Sender)
 
 void __fastcall TForm1::Button3Click(TObject *Sender)
 {
-        String day=Button2->Caption;
+        String day=Button3->Caption;
         conn.get_event(user->Caption,data.rok,data.miesiac,day,Label12);
         data.set_date(day,Label13,Label14,Label15);
         Button43->Visible=true;
@@ -197,7 +197,7 @@ void __fastcall TForm1::Button3Click(TObject *Sender)
 
 void __fastcall TForm1::Button4Click(TObject *Sender)
 {
-        String day=Button3->Caption;
+        String day=Button4->Caption;
         conn.get_event(user->Caption,data.rok,data.miesiac,day,Label12);
         data.set_date(day,Label13,Label14,Label15);
         Button43->Visible=true;
@@ -578,7 +578,7 @@ void __fastcall TForm1::Button42Click(TObject *Sender)
 
         if(Button42->Caption=="Usun wydarzenie")
         {
-                conn.delete_event(Edit1->Text);
+                conn.delete_event(user->Caption,Edit1->Text,data.rok,data.miesiac,Label15->Caption);
         }
         String day=Label15->Caption;
         conn.get_event(user->Caption,data.rok,data.miesiac,day,Label12);
@@ -590,6 +590,7 @@ void __fastcall TForm1::Button42Click(TObject *Sender)
 
         Button42->Visible=false;
         Button46->Visible=false;
+        Button48->Visible=false;
         
         Label16->Visible=false;
         Label17->Visible=false;
@@ -620,6 +621,7 @@ void __fastcall TForm1::Button43Click(TObject *Sender)
                 Label17->Caption="Opis";
         Edit1->Visible=true;
         Button48->Visible=true;
+        Button48->Caption="Dodaj godzine";
 }
 //---------------------------------------------------------------------------
 
@@ -631,6 +633,7 @@ void __fastcall TForm1::Button46Click(TObject *Sender)
 
         Button42->Visible=false;
         Button46->Visible=false;
+        Button48->Visible=false;
 
         Label16->Visible=false;
         Label17->Visible=false;
@@ -639,6 +642,10 @@ void __fastcall TForm1::Button46Click(TObject *Sender)
         Edit1->Visible=false;
         Edit2->Visible=false;
         Edit3->Visible=false;
+
+        Edit1->Text="";
+        Edit2->Text="";
+        Edit3->Text="";
 
         Label19->Caption="";
 
@@ -652,7 +659,7 @@ void __fastcall TForm1::Button44Click(TObject *Sender)
         Button45->Visible=false;
 
         String day=Label15->Caption;
-        conn.get_event_id(data.rok,data.miesiac,day,Label19);
+        conn.get_event_id(user->Caption,data.rok,data.miesiac,day,Label19);
 
         Button42->Visible=true;
                 Button42->Caption="Usun wydarzenie";
@@ -677,13 +684,89 @@ void __fastcall TForm1::Button47Click(TObject *Sender)
 
 void __fastcall TForm1::Button48Click(TObject *Sender)
 {
-        Button48->Visible=false;
-        Label16->Visible=true;
-                Label16->Caption="Godzina";
-        Label18->Visible=true;
-                Label18->Caption="Minuta";
-        Edit2->Visible=true;
-        Edit3->Visible=true;
+        if(Button42->Caption=="Dodaj wydarzenie")
+        {
+                Button48->Visible=false;
+                Label16->Visible=true;
+                        Label16->Caption="Godzina";
+
+                Label18->Visible=true;
+                        Label18->Caption="Minuta";
+
+
+                Edit2->Visible=true;
+                Edit3->Visible=true;
+
+                Edit1->Text="";
+                Edit2->Text="";
+                Edit3->Text="";
+        }
+
+        if(Button42->Caption=="Edytuj wydarzenie")
+        {
+
+                String day=Label15->Caption;
+
+                if(conn.check_id(user->Caption, data.rok, data.miesiac, day, Edit1->Text)==1) {
+                Button48->Visible=false;
+
+                Label17->Visible=true;
+                        Label17->Caption="Opis";
+                        Edit1->Text="";
+
+                Label16->Visible=true;
+                        Label16->Caption="Godzina";
+                        Edit2->Visible=true;
+                        Edit2->Text="";
+
+                Label18->Visible=true;
+                        Label18->Caption="Minuta";
+                        Edit3->Visible=true;
+                        Edit3->Text="";
+
+
+                      ////  conn.edit_event(user->Caption, Edit1->Text, Edit1, Edit2, Edit3);
+
+
+
+
+
+                } else {
+
+                        Edit1->Text="";
+                        ShowMessage("Podano zly numer zadania!");
+
+                }
+
+        }
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm1::Button45Click(TObject *Sender)
+{
+        Button42->Caption="Edytuj wydarzenie";
+
+        Button42->Visible=true;
+        Button46->Visible=true;
+        Button48->Visible=true;
+        Button48->Caption="Sprawdz wydarzenie";
+
+        Label17->Caption="Numer";
+        Label17->Visible=true;
+
+        String day=Label15->Caption;
+        conn.get_event_id(user->Caption,data.rok,data.miesiac,day,Label19);
+
+
+        Button43->Visible=false;
+        Button44->Visible=false;
+        Button45->Visible=false;
+
+        Edit1->Visible=true;
+
+
+
 }
 //---------------------------------------------------------------------------
 
