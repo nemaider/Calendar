@@ -19,7 +19,24 @@ __fastcall TForm3::TForm3(TComponent* Owner)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm3::Button2Click(TObject *Sender)
+void TForm3::signup()
+{
+	if(connection.check_login(Form3->login->Text)==1)
+                if(connection.check_pass(Form3->password->Text,Form3->repassword->Text)==1)
+                        if(connection.signup(Form3->login->Text,Form3->password->Text)==1)
+                        {
+                                ShowMessage("Poprawnie sie zarejestrowales!");
+                                Form3->Close();
+                                Form2->Show();
+                        }
+
+    Form3->login->Text="";
+    Form3->password->Text="";
+    Form3->repassword->Text="";
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm3::LoginButtonClick(TObject *Sender)
 {
         Form3->Close();
         Form2->Show();
@@ -29,28 +46,9 @@ void __fastcall TForm3::Button2Click(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm3::Button1Click(TObject *Sender)
+void __fastcall TForm3::SignupButtonClick(TObject *Sender)
 {
-        if(connection.check_login(login->Text)==1)
-                if(connection.check_pass(password->Text,repassword->Text)==1)
-                        if(connection.signup(login->Text,password->Text)==1)
-                        {
-                                ShowMessage("Poprawnie sie zarejestrowales!");
-                                Form3->Close();
-                                Form2->Show();
-                        }
-
-        login->Text="";
-        password->Text="";
-        repassword->Text="";
-
-}
-//---------------------------------------------------------------------------
-void __fastcall TForm3::FormKeyPress(TObject *Sender, char &Key)
-{
-        char klawisz='\r';
-        if(Key==klawisz)
-                Button1->OnClick(Sender);
+	signup();
 }
 //---------------------------------------------------------------------------
 

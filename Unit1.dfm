@@ -47,7 +47,7 @@ object Form1: TForm1
     Font.Style = []
     ParentFont = False
   end
-  object Label1: TLabel
+  object CalculatedDzien: TLabel
     Left = 664
     Top = 112
     Width = 185
@@ -65,7 +65,7 @@ object Form1: TForm1
     ParentFont = False
     Visible = False
   end
-  object Label2: TLabel
+  object CalcDzien: TLabel
     Left = 664
     Top = 32
     Width = 40
@@ -78,7 +78,7 @@ object Form1: TForm1
     Font.Style = [fsBold]
     ParentFont = False
   end
-  object Label3: TLabel
+  object CalcMiesiac: TLabel
     Left = 716
     Top = 32
     Width = 55
@@ -91,7 +91,7 @@ object Form1: TForm1
     Font.Style = [fsBold]
     ParentFont = False
   end
-  object Label4: TLabel
+  object CalcRok: TLabel
     Left = 800
     Top = 32
     Width = 29
@@ -104,7 +104,7 @@ object Form1: TForm1
     Font.Style = [fsBold]
     ParentFont = False
   end
-  object Label5: TLabel
+  object dayPon: TLabel
     Left = 16
     Top = 104
     Width = 91
@@ -117,7 +117,7 @@ object Form1: TForm1
     Font.Style = [fsBold]
     ParentFont = False
   end
-  object Label6: TLabel
+  object dayWt: TLabel
     Left = 116
     Top = 104
     Width = 50
@@ -130,7 +130,7 @@ object Form1: TForm1
     Font.Style = [fsBold]
     ParentFont = False
   end
-  object Label7: TLabel
+  object daySr: TLabel
     Left = 196
     Top = 104
     Width = 43
@@ -143,7 +143,7 @@ object Form1: TForm1
     Font.Style = [fsBold]
     ParentFont = False
   end
-  object Label8: TLabel
+  object dayCzw: TLabel
     Left = 266
     Top = 104
     Width = 63
@@ -156,7 +156,7 @@ object Form1: TForm1
     Font.Style = [fsBold]
     ParentFont = False
   end
-  object Label9: TLabel
+  object dayPt: TLabel
     Left = 356
     Top = 104
     Width = 45
@@ -169,7 +169,7 @@ object Form1: TForm1
     Font.Style = [fsBold]
     ParentFont = False
   end
-  object Label10: TLabel
+  object daySb: TLabel
     Left = 432
     Top = 104
     Width = 51
@@ -184,7 +184,7 @@ object Form1: TForm1
     ParentColor = False
     ParentFont = False
   end
-  object Label11: TLabel
+  object dayNd: TLabel
     Left = 504
     Top = 104
     Width = 67
@@ -205,7 +205,7 @@ object Form1: TForm1
     Color = clAppWorkSpace
     ParentColor = False
   end
-  object Label13: TLabel
+  object Label15: TLabel
     Left = 792
     Top = 160
     Width = 3
@@ -221,7 +221,7 @@ object Form1: TForm1
     Color = clAppWorkSpace
     ParentColor = False
   end
-  object Label15: TLabel
+  object Label13: TLabel
     Left = 672
     Top = 160
     Width = 3
@@ -279,7 +279,7 @@ object Form1: TForm1
     Color = clAppWorkSpace
     ParentColor = False
   end
-  object Label20: TLabel
+  object Welcome: TLabel
     Left = 56
     Top = 616
     Width = 102
@@ -334,7 +334,7 @@ object Form1: TForm1
     Top = 128
     Width = 73
     Height = 73
-    Caption = 'Button1'
+    Caption = 'Button2'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -349,7 +349,7 @@ object Form1: TForm1
     Top = 128
     Width = 73
     Height = 73
-    Caption = 'Button1'
+    Caption = 'Button3'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -364,7 +364,7 @@ object Form1: TForm1
     Top = 128
     Width = 73
     Height = 73
-    Caption = 'Button1'
+    Caption = 'Button4'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -379,7 +379,7 @@ object Form1: TForm1
     Top = 128
     Width = 73
     Height = 73
-    Caption = 'Button1'
+    Caption = 'Button5'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -395,7 +395,7 @@ object Form1: TForm1
     Width = 73
     Height = 73
     Cancel = True
-    Caption = 'Button1'
+    Caption = 'Button6'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -410,7 +410,7 @@ object Form1: TForm1
     Top = 128
     Width = 73
     Height = 73
-    Caption = 'Button1'
+    Caption = 'Button7'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -425,7 +425,7 @@ object Form1: TForm1
     Top = 208
     Width = 73
     Height = 73
-    Caption = 'Button1'
+    Caption = 'Button8'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -440,7 +440,7 @@ object Form1: TForm1
     Top = 208
     Width = 73
     Height = 73
-    Caption = 'Button1'
+    Caption = 'Button9'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -455,7 +455,7 @@ object Form1: TForm1
     Top = 208
     Width = 73
     Height = 73
-    Caption = 'Button1'
+    Caption = 'Button10'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -470,7 +470,7 @@ object Form1: TForm1
     Top = 208
     Width = 73
     Height = 73
-    Caption = 'Button1'
+    Caption = 'Button11'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -485,7 +485,7 @@ object Form1: TForm1
     Top = 208
     Width = 73
     Height = 73
-    Caption = 'Button1'
+    Caption = 'Button12'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -500,7 +500,7 @@ object Form1: TForm1
     Top = 208
     Width = 73
     Height = 73
-    Caption = 'Button1'
+    Caption = 'Button13'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -515,7 +515,7 @@ object Form1: TForm1
     Top = 208
     Width = 73
     Height = 73
-    Caption = 'Button1'
+    Caption = 'Button14'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -530,7 +530,7 @@ object Form1: TForm1
     Top = 288
     Width = 73
     Height = 73
-    Caption = 'Button1'
+    Caption = 'Button15'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -545,7 +545,7 @@ object Form1: TForm1
     Top = 288
     Width = 73
     Height = 73
-    Caption = 'Button1'
+    Caption = 'Button16'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -560,7 +560,7 @@ object Form1: TForm1
     Top = 288
     Width = 73
     Height = 73
-    Caption = 'Button1'
+    Caption = 'Button17'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -575,7 +575,7 @@ object Form1: TForm1
     Top = 288
     Width = 73
     Height = 73
-    Caption = 'Button1'
+    Caption = 'Button18'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -590,7 +590,7 @@ object Form1: TForm1
     Top = 288
     Width = 73
     Height = 73
-    Caption = 'Button1'
+    Caption = 'Button19'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -605,7 +605,7 @@ object Form1: TForm1
     Top = 288
     Width = 73
     Height = 73
-    Caption = 'Button1'
+    Caption = 'Button20'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -620,7 +620,7 @@ object Form1: TForm1
     Top = 288
     Width = 73
     Height = 73
-    Caption = 'Button1'
+    Caption = 'Button21'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -635,7 +635,7 @@ object Form1: TForm1
     Top = 368
     Width = 73
     Height = 73
-    Caption = 'Button1'
+    Caption = 'Button22'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -650,7 +650,7 @@ object Form1: TForm1
     Top = 368
     Width = 73
     Height = 73
-    Caption = 'Button1'
+    Caption = 'Button23'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -665,7 +665,7 @@ object Form1: TForm1
     Top = 368
     Width = 73
     Height = 73
-    Caption = 'Button1'
+    Caption = 'Button24'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -680,7 +680,7 @@ object Form1: TForm1
     Top = 368
     Width = 73
     Height = 73
-    Caption = 'Button1'
+    Caption = 'Button25'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -695,7 +695,7 @@ object Form1: TForm1
     Top = 368
     Width = 73
     Height = 73
-    Caption = 'Button1'
+    Caption = 'Button26'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -710,7 +710,7 @@ object Form1: TForm1
     Top = 368
     Width = 73
     Height = 73
-    Caption = 'Button1'
+    Caption = 'Button27'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -725,7 +725,7 @@ object Form1: TForm1
     Top = 368
     Width = 73
     Height = 73
-    Caption = 'Button1'
+    Caption = 'Button28'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -740,7 +740,7 @@ object Form1: TForm1
     Top = 448
     Width = 73
     Height = 73
-    Caption = 'Button1'
+    Caption = 'Button29'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -755,7 +755,7 @@ object Form1: TForm1
     Top = 448
     Width = 73
     Height = 73
-    Caption = 'Button1'
+    Caption = 'Button30'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -770,7 +770,7 @@ object Form1: TForm1
     Top = 448
     Width = 73
     Height = 73
-    Caption = 'Button1'
+    Caption = 'Button31'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -785,7 +785,7 @@ object Form1: TForm1
     Top = 448
     Width = 73
     Height = 73
-    Caption = 'Button1'
+    Caption = 'Button32'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -800,7 +800,7 @@ object Form1: TForm1
     Top = 448
     Width = 73
     Height = 73
-    Caption = 'Button1'
+    Caption = 'Button33'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -815,7 +815,7 @@ object Form1: TForm1
     Top = 448
     Width = 73
     Height = 73
-    Caption = 'Button1'
+    Caption = 'Button34'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -830,7 +830,7 @@ object Form1: TForm1
     Top = 448
     Width = 73
     Height = 73
-    Caption = 'Button1'
+    Caption = 'Button35'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -845,7 +845,7 @@ object Form1: TForm1
     Top = 528
     Width = 73
     Height = 73
-    Caption = 'Button1'
+    Caption = 'Button36'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -860,7 +860,7 @@ object Form1: TForm1
     Top = 528
     Width = 73
     Height = 73
-    Caption = 'Button1'
+    Caption = 'Button37'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -870,23 +870,23 @@ object Form1: TForm1
     TabOrder = 36
     OnClick = Button37Click
   end
-  object Button38: TButton
+  object prevMonth: TButton
     Left = 40
     Top = 40
     Width = 33
     Height = 25
     Caption = '<'
     TabOrder = 37
-    OnClick = Button38Click
+    OnClick = prevMonthClick
   end
-  object Button39: TButton
+  object nextMonth: TButton
     Left = 224
     Top = 40
     Width = 33
     Height = 25
     Caption = '>'
     TabOrder = 38
-    OnClick = Button39Click
+    OnClick = nextMonthClick
   end
   object Calculate_date: TButton
     Left = 664
@@ -920,23 +920,23 @@ object Form1: TForm1
     Height = 21
     TabOrder = 42
   end
-  object Button40: TButton
+  object prevYear: TButton
     Left = 320
     Top = 40
     Width = 33
     Height = 25
     Caption = '<'
     TabOrder = 43
-    OnClick = Button40Click
+    OnClick = prevYearClick
   end
-  object Button41: TButton
+  object nextYear: TButton
     Left = 424
     Top = 40
     Width = 33
     Height = 25
     Caption = '>'
     TabOrder = 44
-    OnClick = Button41Click
+    OnClick = nextYearClick
   end
   object Button42: TButton
     Left = 664
@@ -1012,14 +1012,14 @@ object Form1: TForm1
     Visible = False
     OnClick = Button46Click
   end
-  object Button47: TButton
+  object signout: TButton
     Left = 32
     Top = 680
     Width = 153
     Height = 33
     Caption = 'Sign out'
     TabOrder = 53
-    OnClick = Button47Click
+    OnClick = signoutClick
   end
   object Button48: TButton
     Left = 664

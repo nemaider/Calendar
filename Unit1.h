@@ -10,10 +10,24 @@
 #include <Menus.hpp>
 #include <windows.h>
 #include <mysql.h>
+#include <string>
+#include <cstdlib>
+#include <time.h>
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {
 __published:	// IDE-managed Components
+
+///\name grupa zmiennych dotyczaca podstawowego terminarza
+//!@{
+	//!@{
+		//! wskazniki na pola witajace uzytkownika		
+		TLabel *Welcome;
+        TLabel *user;
+	//!@}
+
+	//!@{
+		//!kartka kalendarza
         TButton *Button1;
         TButton *Button2;
         TButton *Button3;
@@ -51,54 +65,115 @@ __published:	// IDE-managed Components
         TButton *Button35;
         TButton *Button36;
         TButton *Button37;
-        TButton *Button38;
-        TButton *Button39;
+	//!@}
+	//!@{
+		///wskaznik na przycisk wylogowujacy uzytkownika 
+		TButton *signout;
+	//!@}
+	//!@{ 
+		//! wskazniki na napisy okreslajace dni tygodnia nad kartkami z kalendarza
+		TLabel *dayPon;
+        TLabel *dayWt;
+        TLabel *daySr;
+        TLabel *dayCzw;
+        TLabel *dayPt;
+        TLabel *daySb;
+        TLabel *dayNd;
+	//!@}
+	//!@{
+		//!wskaznik na przycisk zmniejszajacy oraz zwiekszajacy miesiac o 1
+        TButton *prevMonth;
+		TButton *nextMonth;
+	//!@}
+	//!@{ 
+		//! wskazniki na napisy okreslajace dni tygodnia nad kartkami z kalendarza
+        TButton *prevYear;
+        TButton *nextYear;
+	//!@} 
+	//!@{
+		//! pola z aktulanym miesiacem i rokiem		
         TLabel *Month;
         TLabel *Year;
-        TButton *Calculate_date;
-        TLabel *Label1;
+	//!@} 
+//!@}
+
+///\name grupa zmiennych nalezaca do calculate date
+//!@{
+	//! wskaznik na przycik ktory wywoluje obliczanie daty  
+		TButton *Calculate_date;
+	//! wskaznik na pole w ktorym zostanie wyswietlony obliczony dzien w postaci slownej
+        TLabel *CalculatedDzien;
+	//!@{
+		//! wskazniki na pola w ktore wprowadzamy date do obliczenia 
         TEdit *Miesiac;
         TEdit *Rok;
         TEdit *Dzien;
-        TLabel *Label2;
-        TLabel *Label3;
-        TLabel *Label4;
-        TLabel *Label5;
-        TLabel *Label6;
-        TLabel *Label7;
-        TLabel *Label8;
-        TLabel *Label9;
-        TLabel *Label10;
-        TLabel *Label11;
-        TButton *Button40;
-        TButton *Button41;
-        TLabel *Label12;
-        TLabel *Label13;
-        TButton *Button42;
-        TEdit *Edit1;
+	//!@}
+	//!@{
+		//!	wskazniki na napisy okreslajace dzien miesiac rok 
+        TLabel *CalcDzien;
+        TLabel *CalcMiesiac;
+        TLabel *CalcRok;
+	//!@} 
+//!@}
+
+///\name grupa zmiennych nalezaca do events
+//!@{
+	//!@{
+		//! wskazniki na pola roku miesiaca dnia mowiace uzytkownikowi kiedy wystepuje wydarzenie
+		TLabel *Label15;
         TLabel *Label14;
-        TLabel *Label15;
+        TLabel *Label13;
+	//!@}	
+	//!@{
+		//! wskaznik na opis wydarzenia
+		TLabel *Label12;
+	//!@}
+	//!@{
+		//! wskaznik na przycisk dodajacy do bazy danych nowe wydarzenie
+		TButton *Button42;
+	//!@}
+	//!@{
+		//! wskaznik na przycisk cofajacy do menu eventu
+		TButton *Button46;
+	//!@}
+	//!@{
+		/// wskaznik na przycisk sluzacy do rozszerzenia mozliwosci dodania godziny i minuty do wydarzenia
+		TButton *Button48;
+	//!@}
+	//!@{
+		//!wskaznik na pole okreslajace id wydarzenia
+		TLabel *Label19;
+	//!@}		
+	//!@{
+		//!wskazniki na przyciski sluzace do dodawania, usuwania i edytowania wydarzenia danego dnia
+		TButton *Button43;
+        TButton *Button44;
+        TButton *Button45;
+	//!@}	 
+	//!@{
+		//!wskazniki na pola sluzace do wprowadzania opisu, godziny i minuty wydarzenia
+		TEdit *Edit1;
         TEdit *Edit2;
+		TEdit *Edit3;
+	//!@}	
+	//!@{
+		//!wskazniki na napisy sluzace do opisu pol podczas dodawania\edytowania wydarzenia
         TLabel *Label16;
         TLabel *Label17;
         TLabel *Label18;
-        TEdit *Edit3;
-        TButton *Button43;
-        TButton *Button44;
-        TButton *Button45;
-        TButton *Button46;
-        TButton *Button47;
-        TLabel *Label19;
-        TLabel *Label20;
-        TLabel *user;
-        TButton *Button48;
+	//!@}
+//!@}		
         TLabel *id;
-        void __fastcall FormCreate(TObject *Sender);
-        void __fastcall Button39Click(TObject *Sender);
-        void __fastcall Button38Click(TObject *Sender);
+///\name funkcje onClick() przyciskow okna
+//!@{
+		//! funkcja onClick()
+		void __fastcall FormCreate(TObject *Sender);
+        void __fastcall nextMonthClick(TObject *Sender);
+        void __fastcall prevMonthClick(TObject *Sender);
         void __fastcall Calculate_dateClick(TObject *Sender);
-        void __fastcall Button40Click(TObject *Sender);
-        void __fastcall Button41Click(TObject *Sender);
+        void __fastcall prevYearClick(TObject *Sender);
+        void __fastcall nextYearClick(TObject *Sender);
         void __fastcall Button1Click(TObject *Sender);
         void __fastcall Button2Click(TObject *Sender);
         void __fastcall Button3Click(TObject *Sender);
@@ -140,11 +215,13 @@ __published:	// IDE-managed Components
         void __fastcall Button43Click(TObject *Sender);
         void __fastcall Button46Click(TObject *Sender);
         void __fastcall Button44Click(TObject *Sender);
-        void __fastcall Button47Click(TObject *Sender);
+        void __fastcall signoutClick(TObject *Sender);
         void __fastcall Button48Click(TObject *Sender);
         void __fastcall Button45Click(TObject *Sender);
+//!@}
 private:	// User declarations
 public:		// User declarations
+/// konstruktor okna kalendarza
         __fastcall TForm1(TComponent* Owner);
 };
 //---------------------------------------------------------------------------

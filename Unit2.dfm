@@ -14,10 +14,9 @@ object Form2: TForm2
   Font.Style = []
   OldCreateOrder = False
   Scaled = False
-  OnKeyPress = FormKeyPress
   PixelsPerInch = 96
   TextHeight = 13
-  object Label1: TLabel
+  object LoginLabel: TLabel
     Left = 28
     Top = 56
     Width = 33
@@ -30,7 +29,7 @@ object Form2: TForm2
     Font.Style = []
     ParentFont = False
   end
-  object Label2: TLabel
+  object PassLabel: TLabel
     Left = 4
     Top = 88
     Width = 60
@@ -55,24 +54,25 @@ object Form2: TForm2
     Top = 88
     Width = 217
     Height = 21
+    PasswordChar = '*'
     TabOrder = 1
   end
-  object Button2: TButton
+  object LoginButton: TButton
     Left = 64
-    Top = 168
-    Width = 217
-    Height = 41
-    Caption = 'Sign up'
-    TabOrder = 2
-    OnClick = Button2Click
-  end
-  object Button1: TButton
-    Left = 64
-    Top = 120
+    Top = 128
     Width = 217
     Height = 41
     Caption = 'Log in'
+    TabOrder = 2
+    OnClick = LoginButtonClick
+  end
+  object SignupButton: TButton
+    Left = 64
+    Top = 184
+    Width = 217
+    Height = 41
+    Caption = 'Sign up'
     TabOrder = 3
-    OnClick = Button1Click
+    OnClick = SignupButtonClick
   end
 end

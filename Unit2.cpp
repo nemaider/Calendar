@@ -19,10 +19,9 @@ __fastcall TForm2::TForm2(TComponent* Owner)
 {
 }
 //---------------------------------------------------------------------------
-
-void __fastcall TForm2::Button1Click(TObject *Sender)
+void TForm2::login_user()
 {
-        if(polaczenie.logining(login->Text,password->Text)==0)
+	if(polaczenie.logining(login->Text,password->Text)==0)
                 ShowMessage("Nieprawid³owe dane!");
         else
         {
@@ -35,19 +34,18 @@ void __fastcall TForm2::Button1Click(TObject *Sender)
         password->Text="";
 }
 //---------------------------------------------------------------------------
-void __fastcall TForm2::Button2Click(TObject *Sender)
+
+void __fastcall TForm2::LoginButtonClick(TObject *Sender)
+{
+        login_user();
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm2::SignupButtonClick(TObject *Sender)
 {
         Form2->Hide();
         Form3->Show();
         login->Text="";
         password->Text="";
-}
-//---------------------------------------------------------------------------
-void __fastcall TForm2::FormKeyPress(TObject *Sender, char &Key)
-{
-        char klawisz='\r';
-        if(Key==klawisz)
-                Button1->OnClick(Sender);
 }
 //---------------------------------------------------------------------------
 

@@ -13,10 +13,9 @@ object Form3: TForm3
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
-  OnKeyPress = FormKeyPress
   PixelsPerInch = 96
   TextHeight = 13
-  object Label1: TLabel
+  object LoginLabel: TLabel
     Left = 50
     Top = 40
     Width = 33
@@ -29,7 +28,7 @@ object Form3: TForm3
     Font.Style = []
     ParentFont = False
   end
-  object Label2: TLabel
+  object PassLabel: TLabel
     Left = 26
     Top = 80
     Width = 60
@@ -42,7 +41,7 @@ object Form3: TForm3
     Font.Style = []
     ParentFont = False
   end
-  object Label3: TLabel
+  object RepassLabel: TLabel
     Left = 10
     Top = 120
     Width = 77
@@ -67,6 +66,7 @@ object Form3: TForm3
     Top = 80
     Width = 193
     Height = 21
+    PasswordChar = '*'
     TabOrder = 1
   end
   object repassword: TEdit
@@ -74,24 +74,25 @@ object Form3: TForm3
     Top = 120
     Width = 193
     Height = 21
+    PasswordChar = '*'
     TabOrder = 2
   end
-  object Button1: TButton
+  object SignupButton: TButton
     Left = 88
     Top = 160
     Width = 193
     Height = 49
     Caption = 'Sign up'
     TabOrder = 3
-    OnClick = Button1Click
+    OnClick = SignupButtonClick
   end
-  object Button2: TButton
+  object LoginButton: TButton
     Left = 88
     Top = 232
     Width = 193
     Height = 49
     Caption = 'Log in'
     TabOrder = 4
-    OnClick = Button2Click
+    OnClick = LoginButtonClick
   end
 end

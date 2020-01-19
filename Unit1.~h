@@ -92,6 +92,7 @@ __published:	// IDE-managed Components
         TLabel *Label20;
         TLabel *user;
         TButton *Button48;
+        TLabel *id;
         void __fastcall FormCreate(TObject *Sender);
         void __fastcall Button39Click(TObject *Sender);
         void __fastcall Button38Click(TObject *Sender);
