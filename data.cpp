@@ -20,7 +20,7 @@ void Data::which_day(int day,TLabel *label)
         {
                 case 1: label->Caption="poniedzia³ek";  break;
                 case 2: label->Caption="wtorek";        break;
-                case 3: label->Caption="sroda";         break;
+                case 3: label->Caption="œroda";         break;
                 case 4: label->Caption="czwartek";      break;
                 case 5: label->Caption="pi¹tek";        break;
                 case 6: label->Caption="sobota";        break;

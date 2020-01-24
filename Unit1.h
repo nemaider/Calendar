@@ -165,6 +165,8 @@ __published:	// IDE-managed Components
 	//!@}
 //!@}		
         TLabel *id;
+        TLabel *Label1;
+        TLabel *Label2;
 ///\name funkcje onClick() przyciskow okna
 //!@{
 		//! funkcja onClick()

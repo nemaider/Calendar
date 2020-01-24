@@ -91,14 +91,14 @@ bool DB::check_pass(String pass,String repass)
         return 0;
 }
 
-void DB::get_event(String user,String year,String month,String day,TLabel *label)
+void DB::get_event(String user,String year,String month,String day,TLabel *label, TLabel *label2)
 {
         MYSQL *connect=connect_db();
         if(connect==NULL)
                return;
 
         AnsiString caption;
-        String zapytanie="SELECT DATE_FORMAT(`godzina`,'%H:%i') AS `godzina`,nazwa FROM eventy WHERE user='"+user+"' AND data='"+year+"-"+month+"-"+day+"'"+" ORDER BY godzina ASC";
+        String zapytanie="SELECT DATE_FORMAT(`godzina`,'%H:%i') AS `godzina`,nazwa FROM eventy WHERE user='"+user+"' AND data='"+year+"-"+month+"-"+day+"'"+" AND godzina IS NULL ORDER BY godzina ASC";
         char *query=zapytanie.c_str();
 
         int qstate=mysql_query(connect,query);
@@ -113,21 +113,47 @@ void DB::get_event(String user,String year,String month,String day,TLabel *label
                 }
         }
 
-        if(caption=="")
-                caption="\nbrak wydarzen";
         label->Caption=caption;
+
+        caption="";
+
+        String zapytanie2="SELECT DATE_FORMAT(`godzina`,'%H:%i') AS `godzina`,nazwa FROM eventy WHERE user='"+user+"' AND data='"+year+"-"+month+"-"+day+"'"+" AND godzina IS NOT NULL ORDER BY godzina ASC";
+        char *query2=zapytanie2.c_str();
+
+        int qstate2=mysql_query(connect,query2);
+        if(qstate2==0)
+        {
+                MYSQL_RES *res = mysql_use_result (connect);
+                MYSQL_ROW row=mysql_fetch_row(res);
+                while(row)
+                {
+                        caption=caption+"\n"+row[0]+" "+row[1];
+                        row=mysql_fetch_row(res);
+                }
+        }
+
+
+
+
+        if(caption=="") {
+                caption="\nbrak wydarzen";
+                label->Caption=caption;
+                label2->Caption="";
+                } else {
+                label2->Caption=caption;
+        }
 
         mysql_close(connect);
 }
 
-void DB::get_event_id(String user,String year,String month,String day,TLabel *label)
+void DB::get_event_id(String user,String year,String month,String day,TLabel *label, TLabel *label2)
 {
         MYSQL *connect=connect_db();
         if(connect==NULL)
                return;
 
         AnsiString caption;
-        String zapytanie="SELECT id_zadania FROM eventy WHERE user='"+user+"' AND data='"+year+"-"+month+"-"+day+"'"+" ORDER BY godzina ASC";
+        String zapytanie="SELECT id_zadania FROM eventy WHERE user='"+user+"' AND data='"+year+"-"+month+"-"+day+"'"+" AND godzina IS NULL ORDER BY godzina ASC";
         char *query=zapytanie.c_str();
 
         int qstate=mysql_query(connect,query);
@@ -143,6 +169,25 @@ void DB::get_event_id(String user,String year,String month,String day,TLabel *la
         }
 
         label->Caption=caption;
+
+        caption="";
+
+        String zapytanie2="SELECT id_zadania FROM eventy WHERE user='"+user+"' AND data='"+year+"-"+month+"-"+day+"'"+" AND godzina IS NOT NULL ORDER BY godzina ASC";
+        char *query2=zapytanie2.c_str();
+
+        int qstate2=mysql_query(connect,query2);
+        if(qstate2==0)
+        {
+                MYSQL_RES *res = mysql_use_result (connect);
+                MYSQL_ROW row=mysql_fetch_row(res);
+                while(row)
+                {
+                        caption=caption+"\n"+row[0];
+                        row=mysql_fetch_row(res);
+                }
+        }
+
+        label2->Caption=caption;
 
         mysql_close(connect);
 }
@@ -236,29 +281,32 @@ void DB::delete_event(String user,String id,String year,String month,String day)
 
                         if(id == caption)
                         {
-                                usuwanie="DELETE FROM `eventy` WHERE `Id_zadania`='"+id+"'";
-
-                                char *query1=usuwanie.c_str();
-                                int qstate1=mysql_query(connect,query1);
-
-                                if(qstate1!=0){
-                                        ShowMessage(caption);
-                                        ShowMessage(usuwanie);
-                                        ShowMessage(zapytanie);
-                                        ShowMessage("Nie udalo sie usunac wydarzenia!");
-
-                                } else {
-                                        status=1;
-                                        ShowMessage(caption);
-                                        ShowMessage(usuwanie);
-                                        ShowMessage(zapytanie);
-                                        ShowMessage("Usunieto zadanie");
-                                }
+                               status=1;
                         }
 
                 }
+
+
                 if(status==0)
+                {
+
                         ShowMessage("Podano zly numer zadania!");
+
+                } else {
+
+                        usuwanie="DELETE FROM `eventy` WHERE `user`='"+user+"' AND `Id_zadania`='"+id+"'";
+
+                        char *query1=usuwanie.c_str();
+                        int qstate1=mysql_query(connect,query1);
+
+                        if(qstate1!=0)
+                        {
+                                ShowMessage("Nie udalo sie usunac wydarzenia!");
+                        } else {
+                                ShowMessage("Usunieto wydarzenie!");
+                        }
+
+                }
         }
 
         mysql_close(connect);
@@ -270,16 +318,18 @@ void DB::delete_event(String user,String id,String year,String month,String day)
 
 }
 
- /*
-void DB::edit_event(String user,String id,TEdit *description, TEdit *hour, TEdit *min)
+
+
+void DB::edit_event(String user,String id, TEdit *description, TEdit *hour)
 {
         MYSQL *connect=connect_db();
         if(connect==NULL)
                return;
 
 
-        String zapytanie="SELECT DATE_FORMAT(`godzina`,'%H') AS `godzina`,nazwa FROM eventy WHERE id_zadania='"+id+"' AND user='"+user+"' ORDER BY godzina ASC";
+        String zapytanie="SELECT DATE_FORMAT(`godzina`,'%H') AS `godzina`,nazwa FROM eventy WHERE Id_zadania='"+id+"' AND user='"+user+"' ORDER BY godzina ASC";
         char *query=zapytanie.c_str();
+
 
         int qstate=mysql_query(connect,query);
         if(qstate==0)
@@ -289,13 +339,61 @@ void DB::edit_event(String user,String id,TEdit *description, TEdit *hour, TEdit
 
                 description->Text=row[1];
                 hour->Text=row[0];
-                min->Text=row[0];
 
         }
-
-
 
         mysql_close(connect);
 }
 
-*/
+void DB::edit_event2(String user,String id,TEdit *min)
+{
+        MYSQL *connect=connect_db();
+        if(connect==NULL)
+               return;
+
+
+        String zapytanie="SELECT DATE_FORMAT(`godzina`,'%i') AS `godzina` FROM eventy WHERE Id_zadania='"+id+"' AND user='"+user+"' ORDER BY godzina ASC";
+        char *query=zapytanie.c_str();
+
+
+        int qstate=mysql_query(connect,query);
+        if(qstate==0)
+        {
+                MYSQL_RES *res = mysql_use_result (connect);
+                MYSQL_ROW row=mysql_fetch_row(res);
+
+                min->Text=row[0];
+
+        }
+
+        mysql_close(connect);
+}
+
+void DB::update_event(String user,String nazwa,String year,String month,String day, String godz, String min, String id)
+{
+        MYSQL *connect=connect_db();
+        if(connect==NULL)
+               return;
+
+        String zapytanie;
+
+        if((godz <= 0) && (min <= 0))
+        {
+                zapytanie="UPDATE eventy SET nazwa='"+nazwa+"', godzina=NULL WHERE user='"+user+"' AND id_zadania='"+id+"' AND data='"+year+"-"+month+"-"+day+"'";
+        } else
+        {
+                zapytanie="UPDATE eventy SET nazwa='"+nazwa+"', godzina='"+godz+":"+min+"' WHERE user='"+user+"' AND id_zadania='"+id+"' AND data='"+year+"-"+month+"-"+day+"'";
+        }
+
+
+
+        char *query=zapytanie.c_str();
+
+        int qstate=mysql_query(connect,query);
+        if(qstate!=0)
+                ShowMessage("Nie udalo siê edytowac wydarzenia!");
+
+        mysql_close(connect);
+}
+
+

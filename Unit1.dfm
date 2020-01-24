@@ -200,10 +200,16 @@ object Form1: TForm1
   object Label12: TLabel
     Left = 662
     Top = 192
-    Width = 3
+    Width = 5
     Height = 13
     Color = clAppWorkSpace
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clGreen
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
     ParentColor = False
+    ParentFont = False
   end
   object Label15: TLabel
     Left = 792
@@ -272,12 +278,18 @@ object Form1: TForm1
     Visible = False
   end
   object Label19: TLabel
-    Left = 642
+    Left = 630
     Top = 192
-    Width = 3
+    Width = 5
     Height = 13
     Color = clAppWorkSpace
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlue
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold, fsUnderline]
     ParentColor = False
+    ParentFont = False
   end
   object Welcome: TLabel
     Left = 56
@@ -301,7 +313,7 @@ object Form1: TForm1
     AutoSize = False
     Caption = 'user'
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
+    Font.Color = clHotLight
     Font.Height = -19
     Font.Name = 'MS Sans Serif'
     Font.Style = [fsBold]
@@ -313,6 +325,30 @@ object Form1: TForm1
     Width = 3
     Height = 13
     Visible = False
+  end
+  object Label1: TLabel
+    Left = 662
+    Top = 250
+    Width = 5
+    Height = 13
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clLime
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 630
+    Top = 250
+    Width = 5
+    Height = 13
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlue
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold, fsUnderline]
+    ParentFont = False
   end
   object Button1: TButton
     Left = 24

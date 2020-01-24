@@ -52,18 +52,21 @@ public:
 \param2 rok w ktorym wydarzenie ma wystepowac
 \param3 miesiac w ktorym wydarzenie ma wystepowac
 \param4 dzien w ktorym wydarzenie ma wystepowac
-\param5 wskaznik miejsce w ktorym zostana wypisane zdarzenia z danego dnia
+\param5 wskaznik miejsce w ktorym zostana wypisane zdarzenia calodniowe
+\param6 wskaznik miejsca w ktorym zostana wpisane zdarzenia z godzina
 */		
-        void get_event(String,String,String,String,TLabel *);
+        void get_event(String,String,String,String,TLabel *,TLabel *);
 /**
-*funkcja pobiera id wydarzen z danego dnia ktore sa wyswietlone uzytkownikowi 
-\param1 rok w ktorym wystepuje dane wydarzenie
-\param2 miesiac w ktorym wystepuje dane wydarzenie
-\param3 dzien w ktorym wystepuje dane wydarzenie
-\param4 wskaznik na miejsce w ktorym wypisane sa wydarzenia z danego dnia
+*funkcja pobiera id wydarzen z danego dnia ktore sa wyswietlone uzytkownikowi
+\param1 uzytkownik dla ktorego wystepuje dane wydarzenie
+\param2 rok w ktorym wystepuje dane wydarzenie
+\param3 miesiac w ktorym wystepuje dane wydarzenie
+\param4 dzien w ktorym wystepuje dane wydarzenie
+\param5 wskaznik na miejsce w ktorym wypisane sa id calodniowych wydarzen
+\param6 wskaznik na miejsce w ktorym wypisane sa id z danego dnia dla danej godziny
 \see delete_event()
 */		
-        void get_event_id(String,String,String,String,TLabel *);
+        void get_event_id(String,String,String,String,TLabel *,TLabel *);
 /**
 *funkcja dodaje wydarzenie uzytkownikowi  
 \param1 login uzytkownika ktory dodaje wydarzenie

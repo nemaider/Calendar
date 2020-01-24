@@ -1,9 +1,6 @@
 //---------------------------------------------------------------------------
 #pragma hdrstop
 #include <vcl.h> 
-#include <string>
-#include <cstdlib>
-#include <time.h>
 
 #include "DB.h"
 #include "Unit1.h"
@@ -84,13 +81,13 @@ void __fastcall TForm1::FormCreate(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::Button39Click(TObject *Sender)
+void __fastcall TForm1::nextMonthClick(TObject *Sender)
 {
         data.next_month(Month,Year);
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::Button38Click(TObject *Sender)
+void __fastcall TForm1::prevMonthClick(TObject *Sender)
 {
         data.prev_month(Month,Year);
 }
@@ -120,7 +117,7 @@ void __fastcall TForm1::Calculate_dateClick(TObject *Sender)
 
         if(month <= 0 || month >12){
                 Miesiac->Color = clRed;
-                Label1->Visible = false;
+                CalculatedDzien->Visible = false;
         } else
                 Miesiac->Color = clWhite;
 
@@ -131,18 +128,18 @@ void __fastcall TForm1::Calculate_dateClick(TObject *Sender)
 		       	Miesiac->Color = clRed;
                 } else {
                         Miesiac->Color = clWhite;
-                        Label1->Visible = true;
+                        CalculatedDzien->Visible = true;
                         }
         }
 
         if(Dzien->Color == clRed || Miesiac->Color == clRed || Rok->Color == clRed)
-                Label1->Visible = false;
+                CalculatedDzien->Visible = false;
         else
-                Label1->Visible = true;
+                CalculatedDzien->Visible = true;
 
-        if(Label1->Visible != false) {
-        data.which_day(data.calculate_day(day,month,year),Label1);
-        Label1->Visible=true;
+        if(CalculatedDzien->Visible != false) {
+        data.which_day(data.calculate_day(day,month,year),CalculatedDzien);
+        CalculatedDzien->Visible=true;
         } else
                 ShowMessage("\n\nWyst¹pi³ b³¹d podczas wprowadzania daty!\nZwróæ uwagê na pola w kolorze czerwonym.\n\n");
 }
@@ -150,13 +147,13 @@ void __fastcall TForm1::Calculate_dateClick(TObject *Sender)
 
 
 
-void __fastcall TForm1::Button40Click(TObject *Sender)
+void __fastcall TForm1::prevYearClick(TObject *Sender)
 {
         data.prev_year(Month,Year);
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::Button41Click(TObject *Sender)
+void __fastcall TForm1::nextYearClick(TObject *Sender)
 {
         data.next_year(Month,Year);
 }
@@ -681,7 +678,7 @@ void __fastcall TForm1::Button44Click(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TForm1::Button47Click(TObject *Sender)
+void __fastcall TForm1::signoutClick(TObject *Sender)
 {
         Form2->Show();
         Form1->Close();
